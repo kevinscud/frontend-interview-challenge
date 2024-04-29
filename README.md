@@ -16,9 +16,3 @@ This repository contains my solution to the Quatrix Frontend Interview Challenge
 ## Author
 
 - [Kevin Luse](https://github.com/kevinscud)
-
----
-
-## Scratchpad
-
-- 
