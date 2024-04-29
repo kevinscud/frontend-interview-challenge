@@ -1,5 +1,7 @@
 # Quatrix Frontend Interview Challenge
 
+## Introduction
+
 This repository contains my solution to the Quatrix Frontend Interview Challenge.
 
 ## Project Structure
@@ -11,11 +13,12 @@ This repository contains my solution to the Quatrix Frontend Interview Challenge
 ## Testing
 
 
+## Author
+
+- [Kevin Luse](https://github.com/kevinscud)
+
 ---
 
 ## Scratchpad
 
-
-## Author
-
-- [Kevin Luse](https://github.com/kevinscud)
+- 

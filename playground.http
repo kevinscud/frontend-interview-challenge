@@ -1,0 +1,29 @@
+# This is my scratchpad for exploring the Task API. It uses VS Code’s REST Client Plugin
+
+# 1. List all tasks
+# ---
+# Returns a list of all tasks.
+# Resource: GET /tasks
+
+GET https://task.quatrixglobal.com/tasks HTTP/1.1
+
+###
+
+GET https://task.quatrixglobal.com/tasks?per_page=1 HTTP/1.1
+
+###
+
+GET https://task.quatrixglobal.com/tasks?page=2&per_page=10 HTTP/1.1
+
+###
+
+# 2. Retrieve a task
+# ---
+# Retrieves a specific task using its ID.
+# Resource: GET /tasks/{task_id}
+
+GET https://task.quatrixglobal.com/tasks/task_2flrelvy2XypZuDrOp18f6yGsWd HTTP/1.1
+
+###
+
+GET https://task.quatrixglobal.com/tasks/task_invalid_id HTTP/1.1
