@@ -6,7 +6,6 @@ function App() {
     const [tasks, setTasks] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
 
-
     useEffect(() => {
         const fetchTasksData = async () => {
             const data = await fetchTasks(currentPage);
@@ -16,11 +15,8 @@ function App() {
         fetchTasksData();
     }, [currentPage]);
     
-
     return (
-        <>
-            <TaskList tasks={tasks} />
-        </>
+        <TaskList tasks={tasks} />
     )
 }
 
