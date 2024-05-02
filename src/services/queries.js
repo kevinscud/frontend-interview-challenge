@@ -12,10 +12,11 @@ const api = axios.create({
 });
 
 // Fetch a list of tasks
-export function useTasks(page = 1, perPage = 10) {
+export function useTasks({page = 1, limit = 10}) {
     return useQuery({
-        queryKey: ['tasks', page, perPage],
-        queryFn: () => api.get(`/tasks?page=${page}&per_page=${perPage}`).then(res => res.data)
+        queryKey: ['tasks', page, limit],
+        queryFn: () => api.get(`/tasks?page=${page}&per_page=${limit}`).then(res => res.data),
+        retry: 1
     });
 }
 
@@ -24,15 +25,7 @@ export function useTask(taskId) {
     return useQuery({
         queryKey: ['tasks', taskId],
         queryFn: () => api.get(`/tasks/${taskId}`).then(res => res.data),
-        // retry: 1
-        retry: (failureCount, error) => {
-            // Don't retry if the error status is 404
-            if (error.response.status === 404) {
-                return false;
-            }
-            // Otherwise, retry up to 3 times
-            return failureCount < 3;
-        },
+        retry: 1
     });
 }
 

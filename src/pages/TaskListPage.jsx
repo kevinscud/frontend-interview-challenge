@@ -36,30 +36,27 @@ const ErrorState = ({ response }) => {
     }
 }
 
-ErrorState.propTypes = {
-    response: PropTypes.shape({
-        status: PropTypes.number,
-    }),
-}
-
 const TaskListPage = ({page, limit}) => {
-
+    // Use search params for this root if page and limit are not provided in props
     const {page: pageParam, limit: limitParam } = getRouteApi(ROUTE).useSearch();
-    console.log('+++',pageParam, limitParam);
     page = page ?? pageParam;
     limit = limit ?? limitParam;
     
-    console.log('---',page, limit);
     const query = useTasks({page, limit});
-    // const query = useTasks(page, limit);
-    // console.log(query)
-
     const { data, error, isLoading, isError} = query;
 
     if (isLoading) return <LoadingState />
     if (isError) return <ErrorState response={error.response} />
     // console.log(data.data)
     return <TaskList tasks={data.data} />
+}
+
+// Props validation
+
+ErrorState.propTypes = {
+    response: PropTypes.shape({
+        status: PropTypes.number,
+    }),
 }
 
 TaskListPage.propTypes = {

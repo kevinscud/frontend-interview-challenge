@@ -5,14 +5,15 @@ import TaskListItem from './TaskListItem';
 const TaskList = ({ tasks }) => {
     return (
         <div className='wrapper'>
-            <h2 style={{textAlign: 'center', margin: '30px'}}>Task List</h2>
-            <div>
+            <h2 style={{ textAlign: 'center', margin: '30px' }}>Task List</h2>
+            <div className='tasklist-container'>
                 {tasks.map((task) => (
                     <TaskListItem key={task.id} task={task} />
                 ))}
+                {/* <Pagination currentPage={pagination.page} /> */}
             </div>
-            {/* <Pagination currentPage={pagination.page} /> */}
         </div>
+
     );
 };
 

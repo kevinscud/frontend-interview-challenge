@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import { Link } from '@tanstack/react-router';
+import { useState } from 'react';
 
-const TaskDetailView = ({ task }) => {
+const TaskDetailsView = ({ task }) => {
     <div className='tasklist-item view'>
         <h3>{task.subject}</h3>
         <p>{task.description}</p>
@@ -20,7 +21,7 @@ const TaskDetailView = ({ task }) => {
     </div>
 }
 
-const TaskDetailEdit = ({ task }) => {
+const TaskDetailsEdit = ({ task }) => {
     <div className='tasklist-item edit'>
         <h3>{task.subject}</h3>
         <label>
@@ -50,14 +51,65 @@ const TaskDetailEdit = ({ task }) => {
         </div>
         <button>Save Changes</button>
     </div>
+
+
 }
 
 const TaskDetails = ({ task }) => {
+    const [ edit, setEdit ] = useState(false);
+    const [taskData, setTaskData] = useState(task);
 
     return (
         <div className='wrapper'>
-            <TaskDetailView task={task} />
-            <TaskDetailEdit task={task} />
+            {!edit &&
+                <div className='tasklist-item view'>
+                    <h3>{task.subject}</h3>
+                    <p>{task.description}</p>
+                    <button onClick={() => setEdit(true)}>Edit Task</button>
+                    <div className='task-info'>
+                        <div>
+                            Status: <span>{task.status_id}</span>
+                        </div>
+                        <div>
+                            Priority: <span>{task.task_priority}</span>
+                        </div>
+                        <div>
+                            Due: <span>{task.due_date}</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            {edit &&
+                <div className='tasklist-item edit'>
+                    <h3>{task.subject}</h3>
+                    <label>
+                        <span>Subject</span>
+                        <input type="text" value={task.subject} />
+                    </label>
+                    <label>
+                        <span>Description</span>
+                        <input type="text" value={task.description} />
+                    </label>
+                    <div className='task-info'>
+                        <div>
+                            Status: <span>{task.status_id}</span>
+                        </div>
+                        <div>
+                            Priority: <span>{task.task_priority}</span>
+                        </div>
+                        <div>
+                            Due: <span>{task.due_date}</span>
+                        </div>
+                        <label>
+                            <span>Due Date</span>
+                            <input type='datetime-local' value={task.due_date} />
+                        </label>
+                    </div>
+                    <button onClick={()=> setEdit(false)}>Save Changes</button>
+                </div>
+            }
         </div>
     );
 }

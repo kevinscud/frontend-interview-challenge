@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useTask } from '../services/queries';
 import TaskListItem from '../components/TaskListItem';
 import { getRouteApi } from '@tanstack/react-router'
+import TaskDetails from '../components/TaskDetails';
 
 // The root where this component should be rendered
 const ROUTE = '/tasks/$taskId';
@@ -47,7 +48,8 @@ const TaskDetailPage = ({ taskId }) => {
 
     if (isLoading) return <LoadingState />
     if (isError) return <ErrorState response={error.response} />
-    return <TaskListItem task={data} />
+    // return <TaskListItem task={data} />
+    return <TaskDetails task={data} />
 }
 
 // Props validation

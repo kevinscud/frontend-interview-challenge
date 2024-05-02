@@ -1,7 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-// import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
+// import { RouterProvider, createRootRoute, createRoute } from '@tanstack/react-router'
+import { Router, RouterProvider } from "@tanstack/react-router";
+
+import router from './router.jsx';
 
 import './index.css'
 
@@ -11,9 +14,8 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            <App />
+            {/* <App /> */}
+            <RouterProvider router={router} />
         </QueryClientProvider>
-        {/* <BrowserRouter>
-        </BrowserRouter> */}
     </React.StrictMode>,
 )

@@ -2,14 +2,17 @@ import {
     createRouter,
     createRoute,
     createRootRoute,
+    NotFoundRoute,
 } from '@tanstack/react-router'
 import PageLayout from './pages/PageLayout'
 import TaskListPage from './pages/TaskListPage'
 import TaskDetailPage from './pages/TaskDetailPage'
 import IndexPage from './pages/IndexPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 const rootRoute = createRootRoute({
-    component: PageLayout
+    component: PageLayout,
+    notFoundComponent: NotFoundPage
 })
 
 const routes = [
@@ -43,9 +46,10 @@ const routes = [
         path: '/tasks/$taskId',
         component: TaskDetailPage,
         loader: ({ params }) => params.taskId,
-    })
+    }),
 
 ];
+
 
 const router = createRouter({
     routeTree: rootRoute.addChildren(routes)
