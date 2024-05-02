@@ -64,7 +64,7 @@ html {
 
 body {
     font-family: 'Outfit', sans-serif;
-    background-color: #faf2f2;
+    /* background-color: #e5e7e9; */
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -96,22 +96,31 @@ body {
 header {
     display: flex;
     align-items: center;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    background: white;
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+    /* background: white; */
     /* box-shadow: 0 10px 15px rgba(50, 50, 50, 0.1); */
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     z-index: 100;
+}
+.logo {
+    width: var(--header-height);
+    background-color: red;
 }
 
 nav {
     /* background-color: orange; */
     /* border: 1px solid silver; */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
     min-height: 100px;
     min-height: var(--header-height);
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    border-radius: var(--header-height);
     gap: 4em;
+    background-color: #e1ff01;
+    margin: 60px 0;
 
     & a {
         text-decoration: none;
@@ -120,7 +129,7 @@ nav {
         color: inherit;
         font-weight: 500;
         font-size: 18px;
-        opacity: 0.875;
+        /* opacity: 0.875; */
     }
 
     & img {
@@ -132,15 +141,29 @@ nav {
 
 .tasklist-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    grid-auto-rows: minmax(200px, auto);
-    grid-gap: 20px;
+    /* grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); */
+    /* grid-auto-rows: minmax(200px, auto); */
+    grid-gap: 30px;
+    /* background-color: #fff; */
+    padding: 30px;
+    border-radius: 60px;
+    overflow: hidden;
+    border: 1px dashed #4e4c4a;
+
+    & .task-count {
+        font-size: smaller;
+
+        & em {
+            font-style: normal;
+            font-weight: bolder;
+        }
+    }
 }
   
 .tasklist-item {
-    border: 1px dotted #ddd;
-    background-color: #fff;
-    border-radius: 16px;
+    /* border: 1px dotted #ddd; */
+    background-color: #f3f5f6;
+    border-radius: 30px;
     padding: 20px;
 
     & a {
