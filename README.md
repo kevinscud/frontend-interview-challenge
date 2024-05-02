@@ -1,4 +1,4 @@
-# Quatrix Frontend Interview Challenge - Task Management Application
+# Task Management Application
 
 This repository contains my solution to the Quatrix Frontend Interview Challenge, featuring a task management application built with React and using a provided Task API.
 
