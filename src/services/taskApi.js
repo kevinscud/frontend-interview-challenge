@@ -1,6 +1,13 @@
+// ! NOT USING THIS ANYMORE
+// TODO: DELETE
+
+
 // I have created a CORS proxy at `https://cors-proxy.kevinscud.workers.dev` to bypass CORS restrictions
+
 // const BASE_URL = 'https://task.quatrixglobal.com';
-const BASE_URL = 'https://cors-proxy.kevinscud.workers.dev/?url=https://task.quatrixglobal.com';
+// const BASE_URL = 'https://cors-proxy.kevinscud.workers.dev/?url=https://task.quatrixglobal.com';
+
+const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'https://task.quatrixglobal.com';
 
 // Handle fetch errors
 const handleFetchError = (response) => {
@@ -25,4 +32,3 @@ export const fetchTasks = async (page = 1, perPage = 10) => {
         throw new Error('Failed to fetch tasks');
     }
 };
-

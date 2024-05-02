@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import TaskListItem from './TaskListItem';
+// import Pagination from './Pagination';
 
 const TaskList = ({ tasks }) => {
     return (
@@ -10,6 +11,7 @@ const TaskList = ({ tasks }) => {
                     <TaskListItem key={task.id} task={task} />
                 ))}
             </div>
+            {/* <Pagination currentPage={pagination.page} /> */}
         </div>
     );
 };

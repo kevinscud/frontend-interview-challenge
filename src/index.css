@@ -101,6 +101,16 @@ body {
     margin: 20px;
     padding: 10px;
 
+    & a {
+        text-decoration: none;
+        background-color: #aec5e1;
+        display: inline-block;
+        padding: 6px 8px;
+        margin-top: 10px;
+        border-radius: 6px;
+        color: #3e4b5b;
+    }
+
     & .task-info {
         border-top: 1px dotted #ddd;
         margin-top: 20px;
@@ -114,3 +124,17 @@ body {
         }
     }
 }
+dialog {
+    position: fixed;
+    inset: 0;
+    width: unset;
+    height: unset;
+}
+dialog::backdrop {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.1);
+  }

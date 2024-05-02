@@ -1,23 +1,16 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-/*
-{
-    "id": "task_2fmmoDZSgbfsEUpm3fz46lh7pMl",
-    "object": "task",
-    "task_priority": "normal",
-    "status_id": "open",
-    "subject": "Creating a month Business Plan",
-    "description": "Outline goals, strategies, budget, and timeline for a one-month period.",
-    "due_date": "2024-05-02T08:00:00.000Z",
-    "created_at": "2024-04-29T15:19:59.540Z",
-    "updated_at": "2024-04-29T15:19:59.540Z"
-}
-*/
 const TaskListItem = ({ task }) => {
+    const href = `/tasks/${task.id}`;
+
     return (
         <div className='tasklist-item'>
             <h3>{task.subject}</h3>
             <p>{task.description}</p>
+            {/* <Link to={href}>View Details</Link> */}
+            {/* <Link to={href}>View Details</Link> */}
+            <button>View Details</button>
             <div className='task-info'>
                 <div>
                     Status: <span>{task.status_id}</span>

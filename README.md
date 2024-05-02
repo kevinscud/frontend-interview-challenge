@@ -5,8 +5,7 @@ This repository contains my solution to the Quatrix Frontend Interview Challenge
 ## Technology Stack
 
 - **React**: Client-side rendered React for web apps.
-- **TanStack Router**: For managing routing in the application.
-- **TanStack Query**: For asynchronous state management and data fetching. 
+- **TanStack Query**: For asynchronous state management and data fetching.
 
 ## Project Setup
 
