@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import TaskListItem from './TaskListItem';
-// import Pagination from './Pagination';
+// import Pagination from './Pagination';  
 
 const TaskList = ({ tasks }) => {
     return (

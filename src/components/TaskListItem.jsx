@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 
 const TaskListItem = ({ task }) => {
     const href = `/tasks/${task.id}`;
@@ -8,9 +8,9 @@ const TaskListItem = ({ task }) => {
         <div className='tasklist-item'>
             <h3>{task.subject}</h3>
             <p>{task.description}</p>
-            {/* <Link to={href}>View Details</Link> */}
-            {/* <Link to={href}>View Details</Link> */}
-            <button>View Details</button>
+            <Link to={href}>View Details</Link>
+            {/* <a href={href}>View Details</a> */}
+            {/* <button>View Details</button> */}
             <div className='task-info'>
                 <div>
                     Status: <span>{task.status_id}</span>
