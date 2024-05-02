@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import TaskList from '../components/TaskList';
 import { useTasks } from '../services/queries';
+import { getRouteApi } from '@tanstack/react-router'
 
+// The root where this component should be rendered
+const ROUTE = '/tasks';
 
 const LoadingState = () => {
     return (
@@ -12,16 +15,8 @@ const LoadingState = () => {
     );
 }
 
-const EmptyState = () => {
-    return (
-        <div className='wrapper'>
-            <h1>Nothing to see here.</h1>
-            <p>No tasks available.</p>
-        </div>
-    );
-}
-
 const ErrorState = ({ response }) => {
+    
     if (response?.status === 404) {
         return (
             <div className='wrapper'>
@@ -47,16 +42,29 @@ ErrorState.propTypes = {
     }),
 }
 
-const Tasks = () => {
-    const query = useTasks();
+const TaskListPage = ({page, limit}) => {
+
+    const {page: pageParam, limit: limitParam } = getRouteApi(ROUTE).useSearch();
+    console.log('+++',pageParam, limitParam);
+    page = page ?? pageParam;
+    limit = limit ?? limitParam;
+    
+    console.log('---',page, limit);
+    const query = useTasks({page, limit});
+    // const query = useTasks(page, limit);
     // console.log(query)
 
     const { data, error, isLoading, isError} = query;
 
     if (isLoading) return <LoadingState />
     if (isError) return <ErrorState response={error.response} />
-    console.log(data.data)
+    // console.log(data.data)
     return <TaskList tasks={data.data} />
 }
 
-export default Tasks
+TaskListPage.propTypes = {
+    page: PropTypes.number,
+    limit: PropTypes.number
+}
+
+export default TaskListPage

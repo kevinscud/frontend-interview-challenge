@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import { useTask } from '../services/queries';
 import TaskListItem from '../components/TaskListItem';
+import { getRouteApi } from '@tanstack/react-router'
+
+// The root where this component should be rendered
+const ROUTE = '/tasks/$taskId';
 
 const LoadingState = () => {
     return (
@@ -31,21 +35,31 @@ const ErrorState = ({ response }) => {
     }
 }
 
-ErrorState.propTypes = {
-    response: PropTypes.shape({
-        status: PropTypes.number,
-    }),
-}
+// let taskId = 'task_2fmmoDZSgbfsEUpm3fz46lh7pMl';
+// taskId = 'task_2fmmoDZSgbfsEUpm3fz46lh7pMl';
 
-const Task = () => {
-    const query = useTask('task_2fmmoDZSgbfsEUpm3fz46lh7pMl');
-    // console.log(query)
+const TaskDetailPage = ({ taskId }) => {
+    // Use loader data for this root if taskId is not provided in props
+    taskId = taskId ?? getRouteApi(ROUTE).useLoaderData()
+    const query = useTask(taskId);
 
-    const { data, error, isLoading, isError} = query;
+    const { data, error, isLoading, isError } = query;
 
     if (isLoading) return <LoadingState />
     if (isError) return <ErrorState response={error.response} />
     return <TaskListItem task={data} />
 }
 
-export default Task;
+// Props validation
+
+TaskDetailPage.propTypes = {
+    taskId: PropTypes.string,
+};
+
+ErrorState.propTypes = {
+    response: PropTypes.shape({
+        status: PropTypes.number,
+    }),
+}
+
+export default TaskDetailPage;
