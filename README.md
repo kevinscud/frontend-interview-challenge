@@ -40,9 +40,9 @@ npm install
 To bypass CORS (Cross-Origin Resource Sharing) restrictions when accessing the Task API, a CORS proxy
 server has been set up. This proxy server allows requests from `localhost` to access the Task API.
 
-#### **Use the CORS Proxy Server**
+#### **Using the CORS Proxy Server**
 
-I have created a CORS proxy server at `https://cors-proxy.kevinscud.workers.dev` specifically for this project. This proxy server will fetch data from the Task API and forward it to this application, bypassing CORS restrictions.
+I have created a CORS proxy server at `https://cors-proxy.kevinscud.workers.dev` for this project. This proxy server will fetch data from the Task API and forward it to this application, bypassing CORS restrictions.
 
 #### **Set Up Environment Variables**
 
