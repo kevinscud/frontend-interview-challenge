@@ -17,7 +17,7 @@ const LoadingState = () => {
 <div className='wrapper'>
 <div className='tasklist-container' style={{textAlign: 'center'}}>
     <h2 style={{ margin: '30px 0 -30px' }}>Tasks</h2>
-    <p className='task-count'>Available tasks will show here.</p>
+    <p className='task-count'>Available tasks will be shown here.</p>
     <div className='loader-container'>
         <div className='loader' /> 
     </div>
@@ -57,7 +57,7 @@ const TaskListPage = ({page, limit}) => {
     const { data, error, isLoading, isError} = query;
 
     if (isLoading) return <LoadingState />
-    if (!isLoading) return <LoadingState />
+    // if (!isLoading) return <LoadingState />
     if (isError) return <ErrorState response={error.response} />
     // console.log(data.data)
     return <TaskList tasks={data.data} />

@@ -3,21 +3,25 @@ import { Link } from '@tanstack/react-router';
 
 const TaskListItem = ({ task }) => {
     const href = `/tasks/${task.id}`;
-    const statusIcon = {
-        open: 'circle',
+    // const statusInfo = { // [displayText, materialSymbolName]
+    const [statusText, statusIcon]  = { // [displayText, materialSymbolName]
+        open: ['Open', 'circle'],
         // open: 'circle',
-        in_progress: 'pace',
+        in_progress: ['In Progress', 'pace'],
         // in_progress: 'clock_loader_60',
-        closed: 'task_alt',
+        closed: ['Closed', 'task_alt'],
         // closed: 'task_alt'
     }[task.status_id];
 
     return (
         <div className='tasklist-item'>
             {/* <h3>{task.subject}</h3> */}
-                <span className={`status material-symbols-rounded ${task.status_id}`}>{statusIcon}</span>
-            {/* <div> */}
-            {/* </div> */}
+            <div>
+                <p className={`status ${task.status_id}`}>
+                    <span className='status-icon material-symbols-rounded'>{statusIcon}</span>
+                    <span className='status-text'>{statusText}</span>
+                </p>
+            </div>
             <p>{task.description}</p>
             <Link to={href}>
                 <span className="material-symbols-rounded">arrow_forward</span>
