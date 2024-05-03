@@ -21,17 +21,20 @@ const TaskDetails = ({ task }) => {
                 {!edit &&
                 <>
                 <div className='task-details view'>
-                    <p>Subject</p><h3>{task.subject}</h3>
-                    <p>Description</p><p>{task.description}</p>
-                    <p>Due on</p><time dateTime={task.due_date}>{dueText}</time>
-                    <p>Status</p><p>{task.status_id}</p>
-                    <p>Priority</p><p>{task.task_priority}</p>
-                    <div style={{gridColumn: '1/3', paddingTop: 15, fontSize: 'smaller', opacity: 0.8, borderTop: '1px dashed #ddd'}}>
+                    <p className='key'>Subject</p><h3>{task.subject}</h3>
+                    <p className='key'>Description</p><p>{task.description}</p>
+                    <p className='key'>Due on</p><time dateTime={task.due_date}>{dueText}</time>
+                    <p className='key'>Status</p><p>{task.status_id}</p>
+                    <p className='key'>Priority</p><p>{task.task_priority}</p>
+                    <div style={{gridColumn: '1/3', fontStyle: 'italic', paddingTop: 15, fontSize: 'smaller', opacity: 0.8, borderTop: '1px dashed #ddd'}}>
                         Created {createdText} <>&middot;</> Updated {updatedText}
                     </div>
                 </div>
                 <div style={{marginBottom: 30}}>
                     <button onClick={() => setEdit(true)}>Edit Task</button>
+                    <button onClick={() => setEdit(true)}>Update Priority</button>
+                    <button onClick={() => setEdit(true)}>Close Task</button>
+                    <button onClick={() => setEdit(true)}>Start Task</button>
                 </div>
                 </>
             }

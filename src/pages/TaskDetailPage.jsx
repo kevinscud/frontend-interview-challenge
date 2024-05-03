@@ -3,16 +3,17 @@ import { useTask } from '../services/queries';
 import TaskListItem from '../components/TaskListItem';
 import { getRouteApi } from '@tanstack/react-router'
 import TaskDetails from '../components/TaskDetails';
+import Loader from '../components/Loader';
 
 // The root where this component should be rendered
 const ROUTE = '/tasks/$taskId';
 
 const LoadingState = () => {
     return (
-        <div className='wrapper'>
-            <h1>Please hang on...</h1>
-            <p>We are getting the task</p>
-        </div>
+        <Loader>
+            <h2>Task</h2>
+            <p className='intro'>Task details will be shown here.</p>
+        </Loader>
     );
 }
 
