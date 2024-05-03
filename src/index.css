@@ -182,6 +182,8 @@ nav {
 
     & .intro {
         font-size: smaller;
+        border-bottom: 1px dashed #4e4c4a;
+        padding-bottom: 10px;
 
         & em {
             font-style: normal;
@@ -301,6 +303,7 @@ nav {
         display: grid;
         place-items: center;
         transition: 300ms all;
+        overflow: hidden;
     }
     
 
