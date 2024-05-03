@@ -89,6 +89,7 @@ background-position: 0 0,10px 10px; */
 }
 
 .material-symbols-rounded {
+    overflow: hidden;
     font-variation-settings:
         'FILL' 0,
         'wght' 400,
