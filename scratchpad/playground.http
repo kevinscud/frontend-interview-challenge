@@ -165,7 +165,7 @@ POST {{host}}/tasks/{{task_id}}/reopen
 ###
 
 
-# 7. Update a task
+# 8. Update a task
 # ---
 # Modifies an existing task
 # Resource: PATCH /tasks/{task_id}
@@ -186,7 +186,7 @@ Content-Type: application/json
 ###
 
 
-# 8. Delete a task
+# 9. Delete a task
 # ---
 # Deletes a specified task
 # Resource: DELETE /tasks/{task_id}
