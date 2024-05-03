@@ -8,10 +8,21 @@ const ROUTE = '/tasks';
 
 const LoadingState = () => {
     return (
-        <div className='wrapper'>
-            <h1>Please hang on...</h1>
-            <p>We are getting the task list.</p>
-        </div>
+        // <div className='wrapper'>
+        //     <h1>Please hang on...</h1>
+        //     <p>We are getting the task list.</p>
+        //     <div className='loader'></div> 
+        // </div>
+
+<div className='wrapper'>
+<div className='tasklist-container' style={{textAlign: 'center'}}>
+    <h2 style={{ margin: '30px 0 -30px' }}>Tasks</h2>
+    <p className='task-count'>Available tasks will show here.</p>
+    <div className='loader-container'>
+        <div className='loader' /> 
+    </div>
+</div>
+</div>
     );
 }
 
@@ -46,6 +57,7 @@ const TaskListPage = ({page, limit}) => {
     const { data, error, isLoading, isError} = query;
 
     if (isLoading) return <LoadingState />
+    if (!isLoading) return <LoadingState />
     if (isError) return <ErrorState response={error.response} />
     // console.log(data.data)
     return <TaskList tasks={data.data} />
