@@ -60,10 +60,11 @@ const TaskDetails = ({ task }) => {
     const [taskData, setTaskData] = useState(task);
 
     return (
+
         <div className='wrapper'>
-            <div className='tasklist-container'>
+            <div className='tasklist-container main-container'>
                 <h2 style={{ margin: '30px 0 -30px' }}>Task Details</h2>
-                <p className='task-count'>You can manage this task here.</p>
+                <p className='intro'>You can manage this task here.</p>
                 
                 {!edit &&
                 <div className='tasklist-item view'>
