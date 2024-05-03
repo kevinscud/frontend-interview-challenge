@@ -10,7 +10,7 @@ const TaskList = ({ taskData }) => {
         <div className='wrapper'>
             <div className='tasklist-container main-container'>
                 <h2 style={{ margin: '30px 0 -30px' }}>Tasks</h2>
-                <p className='intro'>Showing <em>{count}</em> of <em>20</em> tasks.</p>
+                <p className='intro'>Showing <em>{count}</em> of <em>{total}</em> tasks.</p>
                 {tasks.map((task) => (
                     <TaskListItem key={task.id} task={task} />
                 ))}
