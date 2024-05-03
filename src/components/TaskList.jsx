@@ -4,7 +4,7 @@ import TaskListItem from './TaskListItem';
 
 const TaskList = ({ taskData }) => {
     // const tasks = taskData.data;
-    const {data:tasks, page, total} = taskData;
+    const { data: tasks, page, total } = taskData;
     const count = tasks.length;
     return (
         <div className='wrapper'>
@@ -21,7 +21,13 @@ const TaskList = ({ taskData }) => {
 };
 
 TaskList.propTypes = {
-    tasks: PropTypes.array.isRequired,
+    taskData: PropTypes.shape({
+        data: PropTypes.arrayOf(PropTypes.object).isRequired,
+        page: PropTypes.number,
+        total: PropTypes.number,
+        per_page: PropTypes.number
+    }).isRequired,
 };
+
 
 export default TaskList;

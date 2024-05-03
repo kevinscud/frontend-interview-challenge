@@ -48,6 +48,7 @@ h6 {
 :root {
     --gutter: 32px;
     --header-height: 100px;
+    --bg-light-color: #f3f5f6;
 }
 
 html,
@@ -232,7 +233,7 @@ nav {
 
 .tasklist-item {
     /* border: 1px dotted #ddd; */
-    background-color: #f3f5f6;
+    background-color: var(--bg-light-color);
     border-radius: 30px;
     padding: 20px;
     gap: 20px;
@@ -320,6 +321,19 @@ nav {
     translate: 10px 0;
     scale: 1.2;
     
+}
+
+.task-details {
+    background-color: var(--bg-light-color);
+    border-radius: 30px;
+    padding: 20px;
+
+    &.view {
+        /* background: red; */
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 20px;
+    }
 }
 
 dialog {
