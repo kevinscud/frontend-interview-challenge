@@ -6,6 +6,7 @@ This repository contains my solution to the Quatrix Frontend Interview Challenge
 
 - **React**: Client-side rendered React for web apps.
 - **TanStack Query**: For asynchronous state management and data fetching.
+- **TanStack Router**: For managing routes in the application.
 
 ## Project Setup
 
@@ -17,25 +18,21 @@ Node.js and npm installed on your machine ([Download Node.js](https://nodejs.org
 
 ### Installation
 
-Clone the repository to your local machine:
+Clone the repository to your local machine and install the dependencies using npm:
 
 ```bash
 git clone https://github.com/kevinscud/frontend-interview-challenge.git
-```
-
-Navigate to the project directory:
-
-```bash
 cd frontend-interview-challenge
-```
-
-Install dependencies using npm:
-
-```bash
 npm install
 ```
 
 ### Configuration
+
+<details>
+
+<summary>Update: The CORS restriction has been resolved and this configuration is no longer necessary.</summary>
+
+<br>
 
 To bypass CORS (Cross-Origin Resource Sharing) restrictions when accessing the Task API, a CORS proxy
 server has been set up. This proxy server allows requests from `localhost` to access the Task API.
@@ -54,6 +51,8 @@ VITE_API_BASE_URL=https://cors-proxy.kevinscud.workers.dev/?url=https://task.qua
 
 **Note: This configuration is only needed for development (localhost) and should not be used in the hosted production application.**
 
+</details>
+
 ### Running the Development Server
 
 Start the development server:
@@ -64,7 +63,7 @@ npm run dev
 
 Open your browser and visit [http://localhost:5173](http://localhost:5173) to view the application.
 
-### Features
+## Features
 
 - Create new tasks by filling out a form with subject, priority, description, and optional due date.
 - View existing tasks with details such as subject, priority, description, and due date.
@@ -72,29 +71,46 @@ Open your browser and visit [http://localhost:5173](http://localhost:5173) to vi
 - Delete tasks with a confirmation step to prevent accidental deletions.
 - Pagination controls are available to navigate through multiple pages of tasks.
 
-### Folder Structure
+## Folder Structure
 
 ```plaintext
-frontend-interview-challenge/
+./
+├── LICENSE
+├── README.md
+├── index.html
+├── package-lock.json
+├── package.json
 ├── public/
+│   └── vite.svg
+├── scratchpad/
+│   ├── playground.http
+│   └── scratchpad.md
 ├── src/
 │   ├── assets/
+│   │   ├── 404-not-found.svg
+│   │   └── react.svg
 │   ├── components/
+│   │   ├── Header.jsx
+│   │   ├── Loader.jsx
+│   │   ├── Pagination.jsx
+│   │   ├── StateContainer.jsx
+│   │   ├── TaskDetails.jsx
 │   │   ├── TaskList.jsx
-│   │   ├── TaskListItem.jsx
-│   │   ├── TaskItem.jsx
-│   │   ├── TaskForm.jsx
-│   │   └── Pagination.jsx
-│   ├── services/
-│   │   └── taskApi.js
-│   ├── App.jsx
+│   │   └── TaskListItem.jsx
+│   ├── index.css
 │   ├── main.jsx
-│   └── index.css
+│   ├── pages/
+│   │   ├── IndexPage.jsx
+│   │   ├── NotFoundPage.jsx
+│   │   ├── PageLayout.jsx
+│   │   ├── TaskDetailPage.jsx
+│   │   └── TaskListPage.jsx
+│   ├── router.jsx
+│   └── services/
+│       └── queries.js
 ├── tests/
-├── scratchpad/
-├── .env
-├── package.json
-└── README.md
+│   └── tests.js
+└── vite.config.js
 ```
 
 - `public/`: Contains static assets and the HTML template.
