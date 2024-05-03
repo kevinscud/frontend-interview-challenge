@@ -2,32 +2,22 @@ import PropTypes from 'prop-types';
 import TaskList from '../components/TaskList';
 import { useTasks } from '../services/queries';
 import { getRouteApi } from '@tanstack/react-router'
+import Loader from '../components/Loader';
 
 // The root where this component should be rendered
 const ROUTE = '/tasks';
 
 const LoadingState = () => {
     return (
-        // <div className='wrapper'>
-        //     <h1>Please hang on...</h1>
-        //     <p>We are getting the task list.</p>
-        //     <div className='loader'></div> 
-        // </div>
-
-<div className='wrapper'>
-<div className='tasklist-container' style={{textAlign: 'center'}}>
-    <h2 style={{ margin: '30px 0 -30px' }}>Tasks</h2>
-    <p className='task-count'>Available tasks will be shown here.</p>
-    <div className='loader-container'>
-        <div className='loader' /> 
-    </div>
-</div>
-</div>
+        <Loader>
+            <h2>Tasks</h2>
+            <p className='intro'>Available tasks will be shown here.</p>
+        </Loader>
     );
 }
 
 const ErrorState = ({ response }) => {
-    
+
     if (response?.status === 404) {
         return (
             <div className='wrapper'>
@@ -47,20 +37,21 @@ const ErrorState = ({ response }) => {
     }
 }
 
-const TaskListPage = ({page, limit}) => {
+const TaskListPage = ({ page, limit }) => {
     // Use search params for this root if page and limit are not provided in props
-    const {page: pageParam, limit: limitParam } = getRouteApi(ROUTE).useSearch();
+    const { page: pageParam, limit: limitParam } = getRouteApi(ROUTE).useSearch();
     page = page ?? pageParam;
     limit = limit ?? limitParam;
-    
-    const query = useTasks({page, limit});
-    const { data, error, isLoading, isError} = query;
+
+    const query = useTasks({ page, limit });
+    const { data, error, isLoading, isError } = query;
 
     if (isLoading) return <LoadingState />
     // if (!isLoading) return <LoadingState />
     if (isError) return <ErrorState response={error.response} />
     // console.log(data.data)
-    return <TaskList tasks={data.data} />
+    return <TaskList taskData={data} />
+    // return <TaskList tasks={data.data} />
 }
 
 // Props validation

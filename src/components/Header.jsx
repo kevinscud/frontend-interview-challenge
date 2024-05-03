@@ -8,8 +8,8 @@ const Header = () => {
             </div> */}
             <nav>
                 <Link to="/" className="">Home</Link>
-                <Link to="/tasks" className="">Tasks</Link>
-                <Link to="/create" className="">Create</Link>
+                <Link to="/tasks" activeOptions={{ exact: true }} className="">View Tasks</Link>
+                <Link to="/create" className="">Create Task</Link>
             </nav>
         </header>
     );

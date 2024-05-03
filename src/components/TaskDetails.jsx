@@ -61,7 +61,11 @@ const TaskDetails = ({ task }) => {
 
     return (
         <div className='wrapper'>
-            {!edit &&
+            <div className='tasklist-container'>
+                <h2 style={{ margin: '30px 0 -30px' }}>Task Details</h2>
+                <p className='task-count'>You can manage this task here.</p>
+                
+                {!edit &&
                 <div className='tasklist-item view'>
                     <h3>{task.subject}</h3>
                     <p>{task.description}</p>
@@ -110,6 +114,8 @@ const TaskDetails = ({ task }) => {
                     <button onClick={()=> setEdit(false)}>Save Changes</button>
                 </div>
             }
+
+            </div>
         </div>
     );
 }
