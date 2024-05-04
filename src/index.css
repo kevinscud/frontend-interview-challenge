@@ -283,7 +283,23 @@ nav {
     display: grid;
     grid-template-columns: 120px 1fr 100px;
 
-
+    box-shadow: 0px 0px 0 #fecd00;
+    transition: 300ms all 200ms;
+    
+    &:hover {
+        box-shadow: -3px 3px 0 #fecd00;
+        background-color: #faf1de;
+        color: #150e0e;
+        translate: 3px 0;
+        transition-delay: 0ms;
+        
+        & a {
+            color: #fecd00;
+            translate: 10px 0;
+            scale: 1.2;
+        }
+    
+    }
 
     /* color:#00A5D1;
         /* height:300px; */
@@ -372,12 +388,7 @@ nav {
     }
 }
 
-.tasklist-item:hover a {
-    color: #fecd00;
-    translate: 10px 0;
-    scale: 1.2;
 
-}
 
 .task-details {
     background-color: var(--bg-light-color);
