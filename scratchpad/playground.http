@@ -2,8 +2,8 @@
 
 @host = https://task.quatrixglobal.com
 # @host = https://cors-proxy.kevinscud.workers.dev/?url=https://task.quatrixglobal.com
-# @task_id = task_2fmmoDZSgbfsEUpm3fz46lh7pMl
-@task_id = task_2fmmoECcrp0lQ0US8ECFAuVxbZq
+@task_id = task_2fmmoDZSgbfsEUpm3fz46lh7pMl
+# @task_id = task_2fmmoECcrp0lQ0US8ECFAuVxbZq
 
 
 # 1. List all tasks
