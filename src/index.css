@@ -290,6 +290,10 @@ nav {
     /* box-shadow: 2 2px 3px rgba(0, 0, 0.1, 0.1); */
     /* transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); */
 
+    .status-container {
+        /* display: grid; */
+    }
+
     .status {
         display: inline-flex;
         place-items: center;
@@ -346,16 +350,24 @@ nav {
 
 
     & .task-info {
-        border-top: 1px dotted #ddd;
-        margin-top: 20px;
+        /* border-top: 1px dotted #ddd; */
+        /* margin-top: 20px; */
         padding-top: 10px;
         display: flex;
         font-size: smaller;
-        opacity: 0.8;
-        display: none;
+        opacity: 0.75;
+        /* display: none; */
 
         & div {
             margin-right: 40px;
+        }
+
+        .icon {
+            vertical-align: top;
+            overflow: hidden;
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 1, 'opsz' 24;
+            margin-right: 10px;
+            margin-left: -2px;
         }
     }
 }

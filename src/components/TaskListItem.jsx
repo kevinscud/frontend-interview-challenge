@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from '@tanstack/react-router';
+import { formatDistance } from 'date-fns';
 
 const TaskListItem = ({ task }) => {
     const href = `/tasks/${task.id}`;
@@ -14,18 +15,18 @@ const TaskListItem = ({ task }) => {
     }[task.status_id];
     
     const [priorityText, priorityIcon]  = { // [displayText, materialSymbolName]
-        open: ['Open', 'circle'],
-        // open: 'circle',
-        in_progress: ['In Progress', 'pace'],
-        // in_progress: 'clock_loader_60',
-        closed: ['Closed', 'task_alt'],
-        // closed: 'task_alt'
-    }[task.status_id];
+        high: ['High Priority', 'priority_high'],
+        // high: ['High Priority', 'priority_high'],
+        normal: ['Normal Priority', 'priority'],
+        low: ['Low Priority', 'low_priority'],
+    }[task.task_priority];
+
+    const dueDateText = formatDistance(new Date(task.due_date), new Date(),  { addSuffix: true });
 
     return (
         <div className='tasklist-item'>
             {/* <h3>{task.subject}</h3> */}
-            <div>
+            <div className='status-container'>
                 <p className={`status ${task.status_id}`}>
                     <span className='status-icon material-symbols-rounded'>{statusIcon}</span>
                     <span className='status-text'>{statusText}</span>
@@ -34,11 +35,8 @@ const TaskListItem = ({ task }) => {
             <div>
                 <p className='subject'>{task.subject}</p>
                 <div className='task-info'>
-                    <div className='priority'>
-                        <span className="material-symbols-rounded">low_priority</span>
-                        <span className="material-symbols-rounded">low_priority</span>
-                    </div>
-                    <div className='due-date'></div>
+                    <span className="material-symbols-rounded icon">{priorityIcon}</span>
+                    {priorityText} <span style={{padding: '0 10px'}}>&bull;</span> Due {dueDateText}
                 </div>
 
             </div>
