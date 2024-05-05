@@ -10,7 +10,7 @@ const TaskDetails = ({ task }) => {
 
     const dueText = format(new Date(task.due_date), "iiii, dd MMMM yyyy 'at' h:mm aa"); // e.g., "Monday, 23 May 2024 at 9:30 AM"    
     const datetimeInputValue = format(new Date(task.due_date), "yyyy-MM-ddThh:mm");
-    console.log(datetimeInputValue)
+    // console.log(datetimeInputValue)
 
     const updatedText = formatDistance(new Date(task.updated_at), new Date(), { addSuffix: true });
     const createdText = formatDistance(new Date(task.created_at), new Date(), { addSuffix: true })
@@ -20,6 +20,27 @@ const TaskDetails = ({ task }) => {
     const { mutate: stopProgress } = useStopProgress(task.id);
     const { mutate: closeTask } = useCloseTask(task.id);
     const { mutate: reopenTask } = useReopenTask(task.id);
+
+    // Handlers will disable buttons on click to prevent multiple clicks
+    const handleStartProgress = (e) => {
+        e.target.disabled = true;
+        startProgress();
+    } 
+
+    const handleStopProgress = (e) => {
+        e.target.disabled = true;
+        stopProgress();
+    }
+    
+    const handleCloseTask = (e) => {
+        e.target.disabled = true;
+        closeTask();
+    }
+    
+    const handleReopenTask = (e) => {
+        e.target.disabled = true;
+        reopenTask();
+    }
 
     const status = task.status_id;
     const [statusText, statusIcon] = { // [displayText, materialSymbolName]
@@ -65,19 +86,19 @@ const TaskDetails = ({ task }) => {
 
                         <div className='task-detail-controls'>
                             {status == 'open' &&
-                                <button type='button' icon='start' className='action-button' onClick={() => startProgress()}>Start Progress</button>
+                                <button type='button' icon='start' className='action-button' onClick={e => handleStartProgress(e)}>Start Progress</button>
                             }
 
                             {status == 'in_progress' &&
-                                <button type='button' icon='circle' className='action-button' onClick={() => stopProgress()}>Stop Progress</button>
+                                <button type='button' icon='circle' className='action-button' onClick={e => handleStopProgress(e)}>Stop Progress</button>
                             }
 
                             {(status == 'open' || status == 'in_progress') &&
-                                <button type='button' icon='task_alt' className='action-button' onClick={() => closeTask()}>Close Task</button>
+                                <button type='button' icon='task_alt' className='action-button' onClick={e => handleCloseTask(e)}>Close Task</button>
                             }
 
                             {status == 'closed' &&
-                                <button type='button' icon='restart_alt' className='action-button' onClick={() => reopenTask()}>Reopen Task</button>
+                                <button type='button' icon='restart_alt' className='action-button' onClick={e => handleReopenTask(e)}>Reopen Task</button>
                             }
 
                             <div className='spacer'/>

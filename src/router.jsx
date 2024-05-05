@@ -8,7 +8,7 @@ import NotFoundPage from './pages/NotFoundPage'
 const rootRoute = createRootRoute({
     component: PageLayout,
     notFoundComponent: NotFoundPage
-})
+});
 
 const routes = [
     // Index
@@ -23,9 +23,6 @@ const routes = [
         getParentRoute: () => rootRoute,
         path: '/tasks', // also matches path with params: '/tasks?page=1&limit=10',
         component: TaskListPage,
-        loader: ({ params }) => {
-            console.log(params);
-        },
         validateSearch: (params) => {
             // validate and parse the search params 
             return {

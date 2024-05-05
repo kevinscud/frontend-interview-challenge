@@ -392,21 +392,6 @@ nav {
     }
 }
 
-@container (width < 600px) {
-    .tasklist-item {
-        grid-template-columns: 150px 1fr 100px;
-        background: red;
-    }
-
-    body {
-        background-color: #00c853;
-    }
-}
-
-@container (min-width: 700px) {
-    grid-template-columns: 120px 1fr 100px;
-}
-
 
 .task-details {
     background-color: var(--bg-light-color);
@@ -546,6 +531,17 @@ nav {
         background-color: #fecd00;
         border-color: #fecd00;
         color: #150e0e;
+    }
+
+    &[disabled] {
+        opacity: 0.4;
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: #fff;
+            border-color: currentColor;
+            /* color: #150e0e; */
+        }
     }
     
 }
