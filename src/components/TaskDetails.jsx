@@ -59,12 +59,11 @@ const TaskDetails = ({ task }) => {
                             </div>
 
                             <div style={{ gridColumn: '1/3', fontStyle: 'italic', paddingTop: 15, fontSize: 'smaller', opacity: 0.8, borderTop: '1px dashed #ddd' }}>
-                                Created {createdText} <>&middot;</> Updated {updatedText}
+                                Created {createdText} <span style={{padding: '0 10px'}}>&middot;</span> Updated {updatedText}
                             </div>
                         </div>
-                        <div style={{ marginBottom: 6 }}>
-                            <button type='button' icon='edit_note' className='action-button' onClick={() => setEdit(true)}>Edit Task</button>
 
+                        <div className='task-detail-controls'>
                             {status == 'open' &&
                                 <button type='button' icon='start' className='action-button' onClick={() => startProgress()}>Start Progress</button>
                             }
@@ -80,6 +79,11 @@ const TaskDetails = ({ task }) => {
                             {status == 'closed' &&
                                 <button type='button' icon='restart_alt' className='action-button' onClick={() => reopenTask()}>Reopen Task</button>
                             }
+
+                            <div className='spacer'/>
+
+                            <button type='button' icon='edit_note' className='action-button' onClick={() => setEdit(true)}>Edit Task</button>
+                            <button type='button' icon='edit_note' className='action-button danger' onClick={() => setEdit(true)}>Delete Task</button>
                         </div>
                     </>
                 }
@@ -102,7 +106,7 @@ const TaskDetails = ({ task }) => {
 
                         </div>
 
-                        <div style={{ marginBottom: 6 }}>
+                        <div className='task-detail-controls'>
                             <button type='button' icon='upgrade' className='action-button' onClick={() => setEdit(false)}>Update</button>
                             <button type='button' icon='close' className='action-button' onClick={() => setEdit(false)}>Cancel</button>
                         </div>

@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { useTask } from '../services/queries';
 import TaskListItem from '../components/TaskListItem';
-import { getRouteApi } from '@tanstack/react-router'
+import { getRouteApi, Link } from '@tanstack/react-router'
 import TaskDetails from '../components/TaskDetails';
 import Loader from '../components/Loader';
+import StateContainer from '../components/StateContainer';
 
 // The root where this component should be rendered
 const ROUTE = '/tasks/$taskId';
@@ -20,19 +21,20 @@ const LoadingState = () => {
 const ErrorState = ({ response }) => {
     if (response?.status === 404) {
         return (
-            <div className='wrapper'>
-                <h1>Task not found</h1>
-                <p>The requested task was not found. It may have been deleted, or the provided ID may be incorrect.</p>
-                <a href='#'>Return to Tasks</a>
-            </div>
+            <StateContainer>
+                <h2>Task not found</h2>
+                <p className='intro'>The requested task was not found. It may have been deleted, or the provided ID may be incorrect.</p>
+                {/* <a href='/tasks'>Return to Tasks</a> */}
+                <Link to={'/tasks'}>Return to Tasks</Link>
+            </StateContainer>
         );
     } else {
         return (
-            <div className='wrapper'>
-                <h1>An error occurred while fetching task.</h1>
-                <p>Something went wrong. Sorry.</p>
-                <a href='#'>Return to Tasks</a>
-            </div>
+            <StateContainer>
+                <h2>Something went wrong.</h2>
+                <p className='intro'>An error occurred while fetching tasks. Please check your internet connection and try again.</p>
+                <Link search={(prev) => ({...prev, refresh: Date.now()})}>Refresh Page</Link>
+            </StateContainer>
         );
     }
 }

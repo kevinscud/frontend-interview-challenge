@@ -50,6 +50,7 @@ h6 {
     --header-height: 100px;
     --bg-light-color: #f3f5f6;
     --bg-light-color: #e5e5f761;
+    --theme-color: #fecd00;
 }
 
 html,
@@ -142,7 +143,7 @@ nav {
     border-radius: var(--header-height);
     gap: 4em;
     background-color: #e1ff01;
-    background-color: #fecd00;
+    background-color: var(--theme-color);
     margin: 60px 0;
     margin: 30px 0;
 
@@ -255,7 +256,8 @@ nav {
 
     a {
         text-decoration: none;
-        background-color: #fecd00;
+        color: inherit;
+        background-color: var(--theme-color);
         width: fit-content;
         padding: 10px 30px;
         border-radius: 30px;
@@ -286,11 +288,11 @@ nav {
     display: grid;
     grid-template-columns: 120px 1fr 100px;
 
-    box-shadow: 0px 0px 0 #fecd00;
-    transition: 300ms all 200ms;
+    box-shadow: 0px 0px 0 var(--theme-color);
+    transition: 200ms all 200ms;
     
     &:hover {
-        box-shadow: -3px 3px 0 #fecd00;
+        box-shadow: -3px 3px 0 var(--theme-color);
         background-color: #faf1de;
         color: #150e0e;
         translate: 3px 0;
@@ -490,6 +492,19 @@ nav {
 
 }
 
+.task-detail-controls {
+    display: flex;
+    margin-bottom: 6px;
+
+    .spacer {
+        flex-grow: 1;
+    }
+
+    :last-child {
+        margin-right: 0;
+    }
+}
+
 .action-button {
     all: unset;
     /* background-color: #00b0ff; */
@@ -501,6 +516,10 @@ nav {
     border: 1px solid currentColor;
     cursor: pointer;
     transition: 200ms all;
+
+    &.danger {
+        color: #ff5722;
+    }
 
     &::before {
         max-width: 32px;
