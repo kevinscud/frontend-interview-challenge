@@ -71,12 +71,6 @@ body {
     background-color: #fff;
     background-color: #df9d1824;
 
-    /* opacity: 0.8;
-background-image:  radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
-background-size: 20px 20px;
-background-position: 0 0,10px 10px; */
-
-
     margin: 0;
     padding: 0;
     font-size: 16px;
@@ -290,29 +284,20 @@ nav {
 
     box-shadow: 0px 0px 0 var(--theme-color);
     transition: 200ms all 200ms;
-    
+
     &:hover {
         box-shadow: -3px 3px 0 var(--theme-color);
         background-color: #faf1de;
         color: #150e0e;
         translate: 3px 0;
         transition-delay: 0ms;
-        
+
         & a {
             color: #fecd00;
             translate: 10px 0;
             scale: 1.2;
         }
-    
-    }
 
-    /* color:#00A5D1;
-        /* height:300px; */
-    /* box-shadow: 2 2px 3px rgba(0, 0, 0.1, 0.1); */
-    /* transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); */
-
-    .status-container {
-        /* display: grid; */
     }
 
     .status {
@@ -321,7 +306,7 @@ nav {
         justify-content: left;
         width: fit-content;
         border: 1px dashed #565c59;
-        
+
         justify-content: left;
         width: fit-content;
         border: 1px dashed #9faaa4;
@@ -343,7 +328,7 @@ nav {
     }
 
     .open {
-        color: #ff5722;
+        color: #607d8b;
     }
 
     .in_progress {
@@ -399,19 +384,18 @@ nav {
     padding: 20px;
     border: 1px solid #e4e4efd4;
     position: relative;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    
+    .key {
+        font-size: smaller;
+        font-weight: 600;
+        translate: 0px 3px;
+        opacity: 0.8;
+    }
 
-    &.view {
-        /* background: red; */
-        display: grid;
-        grid-template-columns: max-content 1fr;
+    &.view {      
         gap: 10px 20px;
-
-        & .key {
-            font-size: smaller;
-            font-weight: bolder;
-            translate: 0px 3px;
-            opacity: 0.9;
-        }
 
         .status-container {
             position: absolute;
@@ -421,11 +405,12 @@ nav {
         }
 
         .status {
+            font-weight: 400;
             display: inline-flex;
             place-items: center;
             justify-content: left;
             width: fit-content;
-            
+
             justify-content: left;
             width: fit-content;
             border-radius: 20px;
@@ -436,43 +421,41 @@ nav {
             border: 1px solid #e4e4efd4;
             /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.15); */
         }
-    
+
         .status-icon {
             max-width: 32px;
             vertical-align: text-bottom;
-            margin-right: 2px;
+            margin-right: 8px;
         }
-    
+
         .status-text {
             font-size: 16px;
         }
-    
+
         .open {
-            color: #ff5722;
+            color: #607d8b;
         }
-    
+
         .in_progress {
             color: #00b0ff;
         }
-    
+
         .closed {
             color: #00c853;
+        }
+
+        .time-summary {
+            font-style: italic;
+            padding-top: 15px;
+            font-size: smaller;
+            opacity: 0.8;
+            border-top: 1px dashed #8b7c7c85;
+            grid-column: 1 / 3;
         }
     }
 
     &.edit {
-        /* background: red; */
-        display: grid;
-        grid-template-columns: max-content 1fr;
         gap: 20px;
-
-        & .key {
-            font-size: smaller;
-            font-weight: bolder;
-            translate: 0px 3px;
-            opacity: 0.9;
-        }
-
     }
 
 }
@@ -480,6 +463,22 @@ nav {
 .task-detail-controls {
     display: flex;
     margin-bottom: 6px;
+
+    /* To prevent multiple clicks when another query is running */
+    &:has(:disabled) {
+
+        .action-button {
+            cursor: not-allowed;
+
+            &:disabled {
+                cursor: wait;
+            }
+
+            &:active {
+                pointer-events: none;
+            }
+        }
+    }
 
     .spacer {
         flex-grow: 1;
@@ -533,33 +532,15 @@ nav {
         color: #150e0e;
     }
 
-    &[disabled] {
+    &:disabled {
         opacity: 0.4;
-        cursor: not-allowed;
+        cursor: wait;
 
         &:hover {
             background-color: #fff;
             border-color: currentColor;
-            /* color: #150e0e; */
         }
     }
-    
-}
-
-dialog {
-    position: fixed;
-    inset: 0;
-    width: unset;
-    height: unset;
-}
-
-dialog::backdrop {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    background: rgba(0, 0, 0, 0.1);
 }
 
 /* Loader */
@@ -573,7 +554,6 @@ dialog::backdrop {
     width: 100px;
     height: 100px;
     padding: 10px;
-    box-sizing: border-box;
     display: grid;
     background: #fff;
     filter: blur(4px) contrast(10) hue-rotate(240deg);
