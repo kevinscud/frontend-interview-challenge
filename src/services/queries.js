@@ -23,9 +23,55 @@ export function useTasks({page = 1, limit = 10}) {
 // Fetch the task with a given taskId
 export function useTask(taskId) {
     return useQuery({
-        queryKey: ['tasks', taskId],
+        queryKey: [taskId],
+        // queryKey: ['tasks', taskId],
         queryFn: () => api.get(`/tasks/${taskId}`).then(res => res.data),
         retry: 1
+    });
+}
+
+// Change the status of an open task to in_progress
+export function useStartProgress(taskId) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: () => api.post(`/tasks/${taskId}/start_progress`).then(res => res.data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [taskId] })
+          },
+    });
+}
+
+// Change the status of an in-progress task to open
+export function useStopProgress(taskId) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: () => api.post(`/tasks/${taskId}/stop_progress`).then(res => res.data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [taskId] })
+          },
+    });
+}
+
+
+// Change the status of an open or in-progress task to closed
+export function useCloseTask(taskId) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: () => api.post(`/tasks/${taskId}/close`).then(res => res.data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [taskId] })
+          },
+    });
+}
+
+// Change the status of a closed task to open
+export function useReopenTask(taskId) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: () => api.post(`/tasks/${taskId}/reopen`).then(res => res.data),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: [taskId] })
+          },
     });
 }
 
