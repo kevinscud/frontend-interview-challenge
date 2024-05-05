@@ -2,14 +2,23 @@ import PropTypes from 'prop-types';
 import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+import { useStartProgress, useStopProgress, useCloseTask, useReopenTask } from '../services/queries';
 
 const TaskDetails = ({ task }) => {
-    const [ edit, setEdit ] = useState(false);
+    const [edit, setEdit] = useState(false);
     const [taskData, setTaskData] = useState(task);
 
     const dueText = format(new Date(task.created_at), "iiii, dd MMMM yyyy 'at' h:mm aa"); // e.g., "Monday, 23 May 2024 at 9:30 AM"    
-    const updatedText = formatDistance(new Date(task.updated_at), new Date(),  { addSuffix: true });
-    const createdText = formatDistance(new Date(task.created_at), new Date(),  { addSuffix: true })
+    const updatedText = formatDistance(new Date(task.updated_at), new Date(), { addSuffix: true });
+    const createdText = formatDistance(new Date(task.created_at), new Date(), { addSuffix: true })
+
+    // Functions to update task status status
+    const { mutate: startProgress } = useStartProgress(task.id);
+    const { mutate: stopProgress } = useStopProgress(task.id);
+    const { mutate: closeTask } = useCloseTask(task.id);
+    const { mutate: reopenTask } = useReopenTask(task.id);
+
+    const status = task.status_id;
 
     return (
         // const updated = new Date()
@@ -17,58 +26,71 @@ const TaskDetails = ({ task }) => {
             <div className='tasklist-container main-container'>
                 <h2 style={{ margin: '30px 0 -30px' }}>Task Details</h2>
                 <p className='intro'>You can manage this task here.</p>
-                
+
                 {!edit &&
-                <>
-                <div className='task-details view'>
-                    <p className='key'>Subject</p><h3>{task.subject}</h3>
-                    <p className='key'>Description</p><p>{task.description}</p>
-                    <p className='key'>Due on</p><time dateTime={task.due_date}>{dueText}</time>
-                    <p className='key'>Status</p><p>{task.status_id}</p>
-                    <p className='key'>Priority</p><p>{task.task_priority}</p>
-                    <div style={{gridColumn: '1/3', fontStyle: 'italic', paddingTop: 15, fontSize: 'smaller', opacity: 0.8, borderTop: '1px dashed #ddd'}}>
-                        Created {createdText} <>&middot;</> Updated {updatedText}
-                    </div>
-                </div>
-                <div style={{marginBottom: 30}}>
-                    <button onClick={() => setEdit(true)}>Edit Task</button>
-                    <button onClick={() => setEdit(true)}>Update Priority</button>
-                    <button onClick={() => setEdit(true)}>Close Task</button>
-                    <button onClick={() => setEdit(true)}>Start Task</button>
-                </div>
-                </>
-            }
+                    <>
+                        <div className='task-details view'>
+                            <p className='key'>Subject</p><h3>{task.subject}</h3>
+                            <p className='key'>Description</p><p>{task.description}</p>
+                            <p className='key'>Due on</p><time dateTime={task.due_date}>{dueText}</time>
+                            <p className='key'>Status</p><p>{task.status_id}</p>
+                            <p className='key'>Priority</p><p>{task.task_priority}</p>
+                            <div style={{ gridColumn: '1/3', fontStyle: 'italic', paddingTop: 15, fontSize: 'smaller', opacity: 0.8, borderTop: '1px dashed #ddd' }}>
+                                Created {createdText} <>&middot;</> Updated {updatedText}
+                            </div>
+                        </div>
+                        <div style={{ marginBottom: 30 }}>
+                            <button onClick={() => setEdit(true)}>Edit Task</button>
+
+                            {status == 'open' &&
+                                <button onClick={() => startProgress()}>Start Progress</button>
+                            }
+
+                            {status == 'in_progress' &&
+                                <button onClick={() => stopProgress()}>Stop Progress</button>
+                            }
+
+                            {(status == 'open' || status == 'in_progress') &&
+                                <button onClick={() => closeTask()}>Close Task</button>
+                            }
+
+                            {status == 'closed' &&
+                                <button onClick={() => reopenTask()}>Reopen Task</button>
+                            }
+                        </div>
+                    </>
+                }
 
 
-            {edit &&
-                <div className='task-details tasklist-item edit'>
-                    <h3>{task.subject}</h3>
-                    <label>
-                        <span>Subject</span>
-                        <input type="text" value={task.subject} />
-                    </label>
-                    <label>
-                        <span>Description</span>
-                        <input type="text" value={task.description} />
-                    </label>
-                    <div className='task-info'>
-                        <div>
-                            Status: <span>{task.status_id}</span>
-                        </div>
-                        <div>
-                            Priority: <span>{task.task_priority}</span>
-                        </div>
-                        <div>
-                            Due: <span>{task.due_date}</span>
-                        </div>
+                {edit &&
+                    <div className='task-details tasklist-item edit'>
+                        <h3>{task.subject}</h3>
                         <label>
-                            <span>Due Date</span>
-                            <input type='datetime-local' value={task.due_date} />
+                            <span>Subject</span>
+                            <input type="text" value={task.subject} />
                         </label>
+                        <label>
+                            <span>Description</span>
+                            <input type="text" value={task.description} />
+                        </label>
+                        <div className='task-info'>
+                            <div>
+                                Status: <span>{task.status_id}</span>
+                            </div>
+                            <div>
+                                Priority: <span>{task.task_priority}</span>
+                            </div>
+                            <div>
+                                Due: <span>{task.due_date}</span>
+                            </div>
+                            <label>
+                                <span>Due Date</span>
+                                <input type='datetime-local' value={task.due_date} />
+                            </label>
+                        </div>
+                        <button onClick={() => setEdit(false)}>Save Changes</button>
                     </div>
-                    <button onClick={()=> setEdit(false)}>Save Changes</button>
-                </div>
-            }
+                }
 
             </div>
         </div>
