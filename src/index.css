@@ -156,6 +156,7 @@ nav {
         /* opacity: 0.875; */
 
         &::before {
+            max-width: 32px;
             content: attr(icon);
             overflow: hidden;
             font-family: 'Material Symbols Rounded';
@@ -241,8 +242,10 @@ nav {
         margin: 30px 0px -30px;
     }
 
-    p {
+    & .intro {
         font-size: smaller;
+        border-bottom: none;
+        padding-bottom: 10px;
 
         & em {
             font-style: normal;
@@ -316,18 +319,20 @@ nav {
         justify-content: left;
         width: fit-content;
         border: 1px dashed #565c59;
-
+        
         justify-content: left;
         width: fit-content;
         border: 1px dashed #9faaa4;
         border-radius: 20px;
         padding: 2px 8px 2px 5px;
         background-color: #fff;
+        border-color: currentColor;
     }
 
     .status-icon {
         vertical-align: text-bottom;
         margin-right: 2px;
+        max-width: 32px;
     }
 
     .status-text {
@@ -337,17 +342,14 @@ nav {
 
     .open {
         color: #ff5722;
-        border-color: #ff5722;
     }
 
     .in_progress {
         color: #00b0ff;
-        border-color: #00b0ff;
     }
 
     .closed {
         color: #00c853;
-        border-color: #00c853;
     }
 
     & a {
@@ -388,6 +390,20 @@ nav {
     }
 }
 
+@container (width < 600px) {
+    .tasklist-item {
+        grid-template-columns: 150px 1fr 100px;
+        background: red;
+    }
+
+    body {
+        background-color: #00c853;
+    }
+}
+
+@container (min-width: 700px) {
+    grid-template-columns: 120px 1fr 100px;
+}
 
 
 .task-details {
@@ -395,12 +411,13 @@ nav {
     border-radius: 30px;
     padding: 20px;
     border: 1px solid #e4e4efd4;
+    position: relative;
 
     &.view {
         /* background: red; */
         display: grid;
         grid-template-columns: max-content 1fr;
-        gap: 20px;
+        gap: 10px 20px;
 
         & .key {
             font-size: smaller;
@@ -408,7 +425,54 @@ nav {
             translate: 0px 3px;
             opacity: 0.9;
         }
+
+        .status-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+        }
+
+        .status {
+            display: inline-flex;
+            place-items: center;
+            justify-content: left;
+            width: fit-content;
+            
+            justify-content: left;
+            width: fit-content;
+            border-radius: 20px;
+            padding: 4px 12px 4px 8px;
+            padding: 7px 14px 7px 10px;
+            background-color: #fff;
+            color: #fff;
+            border: 1px solid #e4e4efd4;
+            /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.15); */
+        }
+    
+        .status-icon {
+            max-width: 32px;
+            vertical-align: text-bottom;
+            margin-right: 2px;
+        }
+    
+        .status-text {
+            font-size: 16px;
+        }
+    
+        .open {
+            color: #ff5722;
+        }
+    
+        .in_progress {
+            color: #00b0ff;
+        }
+    
+        .closed {
+            color: #00c853;
+        }
     }
+
     &.edit {
         /* background: red; */
         display: grid;
@@ -423,6 +487,48 @@ nav {
         }
 
     }
+
+}
+
+.action-button {
+    all: unset;
+    /* background-color: #00b0ff; */
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 18px;
+    border-radius: 30px;
+
+    border: 1px solid currentColor;
+    cursor: pointer;
+    transition: 200ms all;
+
+    &::before {
+        max-width: 32px;
+        content: attr(icon);
+        overflow: hidden;
+        font-family: 'Material Symbols Rounded';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        display: inline-block;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        vertical-align: text-bottom;
+        padding-right: 10px;
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    &:hover {
+        background-color: #fecd00;
+        border-color: #fecd00;
+        color: #150e0e;
+    }
+    
 }
 
 dialog {
