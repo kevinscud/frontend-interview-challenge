@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
 import { format, formatDistance } from 'date-fns';
 import { useStartProgress, useStopProgress, useCloseTask, useReopenTask } from '../services/queries';
@@ -16,17 +15,21 @@ const TaskDetails = ({ task }) => {
     const createdText = formatDistance(new Date(task.created_at), new Date(), { addSuffix: true })
 
     // Functions to update task status
-    const { mutate: startProgress } = useStartProgress(task.id);
-    const { mutate: stopProgress } = useStopProgress(task.id);
-    const { mutate: closeTask } = useCloseTask(task.id);
-    const { mutate: reopenTask } = useReopenTask(task.id);
+    const { mutateAsync: startProgress } = useStartProgress(task.id);
+    const { mutateAsync: stopProgress } = useStopProgress(task.id);
+    const { mutateAsync: closeTask } = useCloseTask(task.id);
+    const { mutateAsync: reopenTask } = useReopenTask(task.id);
 
     // Handlers will disable buttons on click to prevent multiple clicks
+    // Problem: while the clicked button will be disabled, other buttons can still be clicked
+    // before a previous query is completed, possibly leading to a 409 (conflict)
+    // Solution: disable clicks on all buttons using CSS pointer-events: none
+
     const handleStartProgress = (e) => {
         e.target.disabled = true;
         startProgress();
     } 
-
+    
     const handleStopProgress = (e) => {
         e.target.disabled = true;
         stopProgress();
@@ -50,7 +53,6 @@ const TaskDetails = ({ task }) => {
     }[task.status_id];
 
     return (
-        // const updated = new Date()
         <div className='wrapper'>
             <div className='tasklist-container main-container'>
                 <h2 style={{ margin: '30px 0 -30px' }}>Task Details</h2>
@@ -79,7 +81,7 @@ const TaskDetails = ({ task }) => {
                                 </p>
                             </div>
 
-                            <div style={{ gridColumn: '1/3', fontStyle: 'italic', paddingTop: 15, fontSize: 'smaller', opacity: 0.8, borderTop: '1px dashed #ddd' }}>
+                            <div className='time-summary'>
                                 Created {createdText} <span style={{padding: '0 10px'}}>&middot;</span> Updated {updatedText}
                             </div>
                         </div>
@@ -94,17 +96,17 @@ const TaskDetails = ({ task }) => {
                             }
 
                             {(status == 'open' || status == 'in_progress') &&
-                                <button type='button' icon='task_alt' className='action-button' onClick={e => handleCloseTask(e)}>Close Task</button>
+                                <button type='button' icon='task_alt' className='action-button' onClick={e => handleCloseTask(e)}>Close</button>
                             }
 
                             {status == 'closed' &&
-                                <button type='button' icon='restart_alt' className='action-button' onClick={e => handleReopenTask(e)}>Reopen Task</button>
+                                <button type='button' icon='restart_alt' className='action-button' onClick={e => handleReopenTask(e)}>Reopen</button>
                             }
 
                             <div className='spacer'/>
 
-                            <button type='button' icon='edit_note' className='action-button' onClick={() => setEdit(true)}>Edit Task</button>
-                            <button type='button' icon='edit_note' className='action-button danger' onClick={() => setEdit(true)}>Delete Task</button>
+                            <button type='button' icon='edit_note' className='action-button' onClick={() => setEdit(true)}>Edit</button>
+                            <button type='button' icon='edit_note' className='action-button danger' onClick={() => setEdit(true)}>Delete</button>
                         </div>
                     </>
                 }
@@ -128,7 +130,7 @@ const TaskDetails = ({ task }) => {
                         </div>
 
                         <div className='task-detail-controls'>
-                            <button type='button' icon='upgrade' className='action-button' onClick={() => setEdit(false)}>Update</button>
+                            <button type='button' icon='done' className='action-button' onClick={() => setEdit(false)}>Update</button>
                             <button type='button' icon='close' className='action-button' onClick={() => setEdit(false)}>Cancel</button>
                         </div>
                     </>
