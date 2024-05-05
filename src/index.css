@@ -408,6 +408,19 @@ nav {
             translate: 0px 3px;
             opacity: 0.9;
         }
+    }
+    &.edit {
+        /* background: red; */
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: 20px;
+
+        & .key {
+            font-size: smaller;
+            font-weight: bolder;
+            translate: 0px 3px;
+            opacity: 0.9;
+        }
 
     }
 }

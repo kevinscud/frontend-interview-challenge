@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
 import { Link } from '@tanstack/react-router';
 import { useState } from 'react';
-import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+import { format, formatDistance } from 'date-fns';
 import { useStartProgress, useStopProgress, useCloseTask, useReopenTask } from '../services/queries';
 
 const TaskDetails = ({ task }) => {
     const [edit, setEdit] = useState(false);
     const [taskData, setTaskData] = useState(task);
 
-    const dueText = format(new Date(task.created_at), "iiii, dd MMMM yyyy 'at' h:mm aa"); // e.g., "Monday, 23 May 2024 at 9:30 AM"    
+    const dueText = format(new Date(task.due_date), "iiii, dd MMMM yyyy 'at' h:mm aa"); // e.g., "Monday, 23 May 2024 at 9:30 AM"    
+    const datetimeInputValue = format(new Date(task.due_date), "yyyy-MM-ddThh:mm");
+    console.log(datetimeInputValue)
+    
     const updatedText = formatDistance(new Date(task.updated_at), new Date(), { addSuffix: true });
     const createdText = formatDistance(new Date(task.created_at), new Date(), { addSuffix: true })
 
-    // Functions to update task status status
+    // Functions to update task status
     const { mutate: startProgress } = useStartProgress(task.id);
     const { mutate: stopProgress } = useStopProgress(task.id);
     const { mutate: closeTask } = useCloseTask(task.id);
@@ -63,33 +66,26 @@ const TaskDetails = ({ task }) => {
 
 
                 {edit &&
-                    <div className='task-details tasklist-item edit'>
-                        <h3>{task.subject}</h3>
-                        <label>
-                            <span>Subject</span>
-                            <input type="text" value={task.subject} />
-                        </label>
-                        <label>
-                            <span>Description</span>
-                            <input type="text" value={task.description} />
-                        </label>
-                        <div className='task-info'>
-                            <div>
-                                Status: <span>{task.status_id}</span>
-                            </div>
-                            <div>
-                                Priority: <span>{task.task_priority}</span>
-                            </div>
-                            <div>
-                                Due: <span>{task.due_date}</span>
-                            </div>
-                            <label>
-                                <span>Due Date</span>
-                                <input type='datetime-local' value={task.due_date} />
-                            </label>
+                    <>
+                        <div className='task-details edit'>
+                            <label className='key'>Subject</label>
+                            <input onChange={(val) => val} type="text" value={task.subject} />
+
+                            <label className='key'>Description</label>
+                            <input onChange={(val) => val} type="text" value={task.description} />
+
+                            <label className='key'>Priority</label>
+                            <p>{task.task_priority}</p>
+
+                            <label className='key'>Due on</label>
+                            <input onChange={(val) => console.log(val)} type='datetime-local' value={datetimeInputValue} />
+                            
                         </div>
-                        <button onClick={() => setEdit(false)}>Save Changes</button>
-                    </div>
+
+                        <div style={{ marginBottom: 30 }}>
+                            <button onClick={() => setEdit(false)}>Save Changes</button>
+                        </div>
+                    </>
                 }
 
             </div>
