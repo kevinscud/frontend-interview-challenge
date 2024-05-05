@@ -394,6 +394,7 @@ nav {
     background-color: var(--bg-light-color);
     border-radius: 30px;
     padding: 20px;
+    border: 1px solid #e4e4efd4;
 
     &.view {
         /* background: red; */
