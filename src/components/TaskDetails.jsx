@@ -62,7 +62,7 @@ const TaskDetails = ({ task }) => {
                     <>
                         <div className='task-details view'>
                             <p className='key'>Subject</p>
-                            <h3 style={{ marginRight: 100 }}>{task.subject}</h3>
+                            <h4 style={{ marginRight: 100 }}>{task.subject}</h4>
 
                             <p className='key'>Description</p>
                             <p>{task.description}</p>
@@ -105,7 +105,7 @@ const TaskDetails = ({ task }) => {
 
                             <div className='spacer'/>
 
-                            <button type='button' icon='edit_note' className='action-button' onClick={() => setEdit(true)}>Edit</button>
+                            <button type='button' icon='edit' className='action-button' onClick={() => setEdit(true)}>Edit</button>
                             <button type='button' icon='delete' className='action-button danger' onClick={() => setEdit(true)}>Delete</button>
                         </div>
                     </>

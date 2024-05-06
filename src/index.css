@@ -78,6 +78,7 @@ body {
     color: #3e4b5b;
     color: #52526bed;
     color: #133e44;
+    color: #133e44c7;
     font-size: 20px;
     font-weight: 300;
 }
@@ -265,6 +266,7 @@ nav {
     & .intro {
         font-size: smaller;
         border-bottom: 1px dashed #4e4c4a;
+        border-bottom: 1px dashed #133e4463;
         padding-bottom: 10px;
 
         & em {
@@ -439,7 +441,7 @@ nav {
         font-size: smaller;
         font-weight: 600;
         translate: 0px 3px;
-        opacity: 0.8;
+        /* opacity: 0.8; */
     }
 
     &.view {      
@@ -546,10 +548,11 @@ nav {
     margin-right: 10px;
     font-size: 18px;
     border-radius: 30px;
-    font-weight: 600;
+    font-weight: 400;
     border: 1px solid currentColor;
     cursor: pointer;
     transition: 200ms all;
+    color: #133e44c7;
 
     &.danger {
         color: #ff5722;
