@@ -2,6 +2,12 @@
 
 This repository contains my solution to the Quatrix Frontend Interview Challenge, featuring a task management application built with React and using a provided Task API.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dbb5c8fa-0c64-4a5e-8cf2-e8abb0d7dce0/deploy-status)](https://app.netlify.com/sites/regal-mermaid-18c954/deploys)
+
+[Demo](https://regal-mermaid-18c954.netlify.app/)
+
+<!-- --- -->
+
 ## Technology Stack
 
 - **React**: Client-side rendered React for web apps.
@@ -122,10 +128,6 @@ Open your browser and visit [http://localhost:5173](http://localhost:5173) to vi
 - `tests/`: Contains unit tests.
 - `package.json`: Defines project dependencies and scripts.
 - `README.md`: Documentation for the project.
-
-## Demo
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/dbb5c8fa-0c64-4a5e-8cf2-e8abb0d7dce0/deploy-status)](https://app.netlify.com/sites/regal-mermaid-18c954/deploys)
 
 ## Author
 
