@@ -123,6 +123,10 @@ Open your browser and visit [http://localhost:5173](http://localhost:5173) to vi
 - `package.json`: Defines project dependencies and scripts.
 - `README.md`: Documentation for the project.
 
+## Demo
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dbb5c8fa-0c64-4a5e-8cf2-e8abb0d7dce0/deploy-status)](https://app.netlify.com/sites/regal-mermaid-18c954/deploys)
+
 ## Author
 
 - [Kevin Luse](https://github.com/kevinscud)
