@@ -476,6 +476,7 @@ nav {
 
             &:active {
                 pointer-events: none;
+                background-color: var(--theme-color);
             }
         }
     }
@@ -493,10 +494,11 @@ nav {
     all: unset;
     /* background-color: #00b0ff; */
     padding: 10px 20px;
+    padding: 9px 21px 10px 14px;
     margin-right: 10px;
     font-size: 18px;
     border-radius: 30px;
-
+    font-weight: 600;
     border: 1px solid currentColor;
     cursor: pointer;
     transition: 200ms all;
