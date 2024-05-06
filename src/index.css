@@ -129,17 +129,19 @@ nav {
     /* background-color: orange; */
     /* border: 1px solid silver; */
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+    /* box-shadow: 0 0px 3px rgba(0,0,0,0.1); */
     min-height: 100px;
     min-height: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: space-around;
     border-radius: var(--header-height);
+    border-radius: 60px 60px 0 0;
     gap: 4em;
     background-color: #e1ff01;
     background-color: var(--theme-color);
     margin: 60px 0;
-    margin: 30px 0;
+    margin: 30px 0 0px;
 
     & a {
         text-decoration: none;
@@ -206,13 +208,16 @@ nav {
 
 .main-container {
     border-radius: 60px;
+    border-radius: 0 0 60px 60px;
     overflow: hidden;
-    border: 1px dashed #4e4c4a;
+    border: 0px dashed #4e4c4a;
     display: grid;
     grid-gap: 30px;
     background-color: #fff;
     padding: 30px;
     margin-bottom: 60px;
+
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
 
     & .intro {
         font-size: smaller;
