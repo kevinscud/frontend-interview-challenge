@@ -136,8 +136,8 @@ nav {
     justify-content: space-around;
     border-radius: var(--header-height);
     gap: 4em;
-    background-color: var(--theme-color);
     background-color: #e1ff01;
+    background-color: var(--theme-color);
     margin: 60px 0;
     margin: 30px 0;
 
