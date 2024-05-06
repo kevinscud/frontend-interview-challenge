@@ -47,7 +47,7 @@ h6 {
 
 :root {
     --gutter: 32px;
-    --header-height: 100px;
+    --header-height: 110px;
     --bg-light-color: #f3f5f6;
     --bg-light-color: #e5e5f761;
     --theme-color: #fecd00;
@@ -76,6 +76,7 @@ body {
     font-size: 16px;
     color: #3e4b5b;
     color: #52526bed;
+    color: #133e44;
     font-size: 20px;
     font-weight: 300;
 }
@@ -121,8 +122,49 @@ header {
 }
 
 .logo {
-    width: var(--header-height);
-    background-color: red;
+        --offset: 10px;
+        width: var(--header-height);
+        height: var(--header-height);
+        border-radius: 20px;
+        border-radius: 70px;
+        background-color: red;
+        background-color: #fff;
+        translate: 0 -30px;
+        /* box-shadow: 0 0px 3px rgba(0,0,0,0.1); */
+        /* line-height: 10px; */
+        color: #d9ebd1;
+        width: 130px;
+        height: 130px;
+        font-weight: 100;
+        font-size: 22px;
+        margin-bottom: -30px;
+        margin-top: -30px;
+        border-radius: 30px;
+        background-color: #e9c9bc;
+        background: #133e44;
+        /* translate: 0 -30px; */
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 52px;
+        padding: 20px 0 10px;
+        /* box-shadow: 0 0px 3px rgba(0,0,0,0.1); */
+        /* border: 4px solid var(--theme-color); */
+        /* box-shadow: 0 0px 0 6px rgb(250 241 222); */
+    
+    .icon {
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 100,
+        'GRAD' 0,
+        'opsz' 24;
+        font-size: 64px;
+        line-height: 64px;
+        vertical-align: baseline;
+    }
+    .text {
+        line-height: 10px;
+    }
 }
 
 nav {
@@ -141,7 +183,7 @@ nav {
     background-color: #e1ff01;
     background-color: var(--theme-color);
     margin: 60px 0;
-    margin: 30px 0 0px;
+    margin: 60px 0 0px;
 
     & a {
         text-decoration: none;
@@ -242,7 +284,7 @@ nav {
         margin: 30px 0px -30px;
     }
 
-    & .intro {
+    .intro {
         font-size: smaller;
         border-bottom: none;
         padding-bottom: 10px;
@@ -263,8 +305,8 @@ nav {
     }
 
     img {
-        max-width: 440px;
-        margin: 40px;
+        max-width: 400px;
+        margin: 10px 40px;
     }
 }
 
