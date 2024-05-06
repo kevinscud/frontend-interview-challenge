@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { useTask } from '../services/queries';
-import TaskListItem from '../components/TaskListItem';
 import { getRouteApi, Link } from '@tanstack/react-router'
 import TaskDetails from '../components/TaskDetails';
 import Loader from '../components/Loader';
@@ -24,7 +23,6 @@ const ErrorState = ({ response }) => {
             <StateContainer>
                 <h2>Task not found</h2>
                 <p className='intro'>The requested task was not found. It may have been deleted, or the provided ID may be incorrect.</p>
-                {/* <a href='/tasks'>Return to Tasks</a> */}
                 <Link to={'/tasks'}>Return to Tasks</Link>
             </StateContainer>
         );

@@ -106,7 +106,7 @@ const TaskDetails = ({ task }) => {
                             <div className='spacer'/>
 
                             <button type='button' icon='edit_note' className='action-button' onClick={() => setEdit(true)}>Edit</button>
-                            <button type='button' icon='edit_note' className='action-button danger' onClick={() => setEdit(true)}>Delete</button>
+                            <button type='button' icon='delete' className='action-button danger' onClick={() => setEdit(true)}>Delete</button>
                         </div>
                     </>
                 }
