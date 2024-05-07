@@ -62,7 +62,7 @@ const TaskDetails = ({ task }) => {
                     <>
                         <div className='task-details view'>
                             <p className='key'>Subject</p>
-                            <h4 style={{ marginRight: 100 }}>{task.subject}</h4>
+                            <p style={{ marginRight: 100 }}>{task.subject}</p>
 
                             <p className='key'>Description</p>
                             <p>{task.description}</p>
