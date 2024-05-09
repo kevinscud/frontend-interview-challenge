@@ -1,4 +1,5 @@
 /* ---- CSS Reset ---- */
+
 /* CREDIT: Josh Comeau (https://www.joshwcomeau.com/css/custom-css-reset/) */
 *,
 *::before,
@@ -48,36 +49,26 @@ h6 {
 :root {
     --gutter: 32px;
     --header-height: 110px;
-    --bg-light-color: #f3f5f6;
     --bg-light-color: #e5e5f761;
     --theme-color: #fecd00;
 }
 
-html,
-body {
+html {
     display: block;
     width: 100%;
     height: 100%;
-}
 
-html {
     /* overflow-x: hidden; */
     overflow-y: auto;
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
-    /* background-color: #e5e7e9; */
-    background-color: #fff;
-    background-color: #df9d1824;
-    background-color: #3726064d;
+    font-family: Outfit, sans-serif;
 
+    /* background-color: #e5e7e9; */
+    background-color: #3726064d;
     margin: 0;
     padding: 0;
-    font-size: 16px;
-    color: #3e4b5b;
-    color: #52526bed;
-    color: #133e44;
     color: #133e44c7;
     font-size: 20px;
     font-weight: 300;
@@ -100,17 +91,20 @@ body {
     grid-template-columns: 1fr min(100ch, calc(100% - 2 * var(--gutter))) 1fr;
     grid-template-columns: 1fr min(60em, calc(100% - 2 * var(--gutter))) 1fr;
     grid-column-gap: 32px;
+
     /* border: 1px solid red; */
 
     @media (width < 860px) {
         /* .wrapper { */
             display: block;
+
         /* } */
     }
 }
 
 .wrapper>* {
     grid-column: 2;
+
     /* border: 1px solid blue; */
 }
 
@@ -123,9 +117,13 @@ body {
 header {
     display: flex;
     align-items: center;
+
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+
     /* background: white; */
+
     /* box-shadow: 0 10px 15px rgba(50, 50, 50, 0.1); */
+
     /* position: sticky; */
     top: 0;
     z-index: 100;
@@ -133,14 +131,11 @@ header {
 
 .logo {
         --offset: 10px;
-        width: var(--header-height);
-        height: var(--header-height);
-        border-radius: 20px;
-        border-radius: 70px;
-        background-color: red;
-        background-color: #fff;
+
         translate: 0 -30px;
+
         /* box-shadow: 0 0px 3px rgba(0,0,0,0.1); */
+
         /* line-height: 10px; */
         color: #d9ebd1;
         width: 130px;
@@ -150,16 +145,19 @@ header {
         margin-bottom: -30px;
         margin-top: -30px;
         border-radius: 30px;
-        background-color: #e9c9bc;
-        background: #133e44;
+        background-color: #133e44;
+
         /* translate: 0 -30px; */
         display: grid;
         place-items: center;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 52px;
         padding: 20px 0 10px;
+
         /* box-shadow: 0 0px 3px rgba(0,0,0,0.1); */
+
         /* border: 4px solid var(--theme-color); */
+
         /* box-shadow: 0 0px 0 6px rgb(250 241 222); */
         position: absolute;
         text-decoration: none;
@@ -174,6 +172,7 @@ header {
         line-height: 64px;
         vertical-align: baseline;
     }
+
     .text {
         line-height: 10px;
     }
@@ -181,9 +180,11 @@ header {
 
 nav {
     /* background-color: orange; */
+
     /* border: 1px solid silver; */
+
     /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
-    box-shadow: 0 0px 3px rgba(0,0,0,0.35);
+    box-shadow: 0 0 3px rgb(0 0 0 / 35%);
     min-height: 100px;
     min-height: var(--header-height);
     display: flex;
@@ -195,7 +196,7 @@ nav {
     background-color: #e1ff01;
     background-color: var(--theme-color);
     margin: 60px 0;
-    margin: 60px 0 0px;
+    margin: 60px 0 0;
 
     & .nav-link {
         text-decoration: none;
@@ -204,6 +205,7 @@ nav {
         color: inherit;
         font-weight: 500;
         font-size: 18px;
+
         /* opacity: 0.875; */
 
         &::before {
@@ -222,10 +224,8 @@ nav {
             word-wrap: normal;
             direction: ltr;
             -webkit-font-smoothing: antialiased;
-
             vertical-align: text-bottom;
             padding-right: 10px;
-
             font-variation-settings:
                 'FILL' 0,
                 'wght' 400,
@@ -238,6 +238,7 @@ nav {
 
     & .nav-link.active {
         /* background-color: #00c853; */
+
         /* opacity: 0.875; */
         color: #150e0e;
         position: relative;
@@ -249,7 +250,7 @@ nav {
             right: -1px;
             bottom: -15px;
             height: 1px;
-            background-color: currentColor;
+            background-color: currentcolor;
         }
     }
 
@@ -264,19 +265,21 @@ nav {
     border-radius: 60px;
     border-radius: 0 0 60px 60px;
     overflow: hidden;
-    border: 0px dashed #4e4c4a;
+    border: 0 dashed #4e4c4a;
     display: grid;
     grid-gap: 30px;
     background-color: #fff;
     padding: 30px;
     margin-bottom: 60px;
-
-    box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 3px rgb(0 0 0 / 10%);
 
     & .intro {
         font-size: smaller;
+
         /* border-bottom: 1px dashed #4e4c4a; */
+
         /* border-bottom: 1px dashed #133e4463; */
+
         /* padding-bottom: 10px; */
 
         & em {
@@ -289,12 +292,11 @@ nav {
 .state-container {
     text-align: center;
     display: grid;
-    align-items: center;
+    place-items: center center;
     justify-content: center;
-    justify-items: center;
 
     h2 {
-        margin: 30px 0px -30px;
+        margin: 30px 0 -30px;
     }
 
     .intro {
@@ -324,8 +326,8 @@ nav {
 }
 
 .tasklist-container {
-
     /* grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); */
+
     /* grid-auto-rows: minmax(200px, auto); */
 
 
@@ -341,17 +343,16 @@ nav {
     gap: 20px;
     display: grid;
     grid-template-columns: 120px 1fr 100px;
-
-    box-shadow: 0px 0px 0 var(--theme-color);
+    box-shadow: 0 0 0 var(--theme-color);
     border: 1px solid transparent;
     transition: 200ms all 200ms;
 
     &:hover {
         /* box-shadow: -3px 3px 0 var(--theme-color); */
         border: 1px dashed #a1a1b6;
-        background-color: #faf1de;
         background-color: #fff;
         color: #150e0e;
+
         /* translate: 3px 0; */
         transition-delay: 0ms;
 
@@ -368,15 +369,11 @@ nav {
         place-items: center;
         justify-content: left;
         width: fit-content;
-        border: 1px dashed #565c59;
-
-        justify-content: left;
-        width: fit-content;
         border: 1px dashed #9faaa4;
         border-radius: 20px;
         padding: 2px 8px 2px 5px;
         background-color: #fff;
-        border-color: currentColor;
+        border-color: currentcolor;
     }
 
     .status-icon {
@@ -404,9 +401,10 @@ nav {
 
     & a {
         text-decoration: none;
+
         /* background-color: #aec5e1; */
-        display: inline-block;
         padding: 6px 8px;
+
         /* margin-top: 10px; */
         border-radius: 6px;
         color: #3e4b5b;
@@ -419,11 +417,13 @@ nav {
 
     & .task-info {
         /* border-top: 1px dotted #ddd; */
+
         /* margin-top: 20px; */
         padding-top: 10px;
         display: flex;
         font-size: smaller;
         opacity: 0.75;
+
         /* display: none; */
 
         & div {
@@ -457,7 +457,8 @@ nav {
     .key {
         font-size: smaller;
         font-weight: 600;
-        translate: 0px 3px;
+        translate: 0 3px;
+
         /* opacity: 0.8; */
     }
 
@@ -477,18 +478,16 @@ nav {
             place-items: center;
             justify-content: left;
             width: fit-content;
-
-            justify-content: left;
-            width: fit-content;
             border-radius: 20px;
-            padding: 4px 12px 4px 8px;
             padding: 7px 14px 7px 10px;
             background-color: #fff;
             color: #fff;
             border: 1px solid #e4e4efd4;
             border: 1px dashed #a1a1b6;
-            border-color: currentColor;
+            border-color: currentcolor;
+
             /* border-style: solid; */
+
             /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.15); */
         }
 
@@ -519,7 +518,6 @@ nav {
             padding-top: 15px;
             font-size: smaller;
             opacity: 0.8;
-            border-top: 1px dashed #8b7c7c85;
             border-top: 1px dashed #a1a1b6;
             grid-column: 1 / 3;
         }
@@ -537,7 +535,6 @@ nav {
 
     /* To prevent multiple clicks when another query is running */
     &:has(:disabled) {
-
         .action-button {
             cursor: not-allowed;
 
@@ -563,6 +560,7 @@ nav {
 
 .action-button {
     all: unset;
+
     /* background-color: #00b0ff; */
     padding: 10px 20px;
     padding: 9px 21px 10px 14px;
@@ -570,7 +568,7 @@ nav {
     font-size: 18px;
     border-radius: 30px;
     font-weight: 400;
-    border: 1px solid currentColor;
+    border: 1px solid currentcolor;
     cursor: pointer;
     transition: 200ms all;
     color: #133e44c7;
@@ -612,7 +610,7 @@ nav {
 
         &:hover {
             background-color: #fff;
-            border-color: currentColor;
+            border-color: currentcolor;
         }
     }
 }
@@ -634,22 +632,22 @@ nav {
     mix-blend-mode: darken;
 }
 
-.loader:before {
+.loader::before {
     content: "";
     grid-area: 1/1;
     margin: 30px 0;
     border-radius: 100px;
-    background: #00ffff;
+    background: #0ff;
 }
 
-.loader:after {
+.loader::after {
     content: "";
     grid-area: 1/1;
     height: 35px;
     width: 35px;
     margin: auto;
     border-radius: 50%;
-    background: #00ffff;
+    background: #0ff;
     animation: l5 2s infinite linear;
 }
 
