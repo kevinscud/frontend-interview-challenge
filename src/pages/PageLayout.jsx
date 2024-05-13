@@ -7,7 +7,7 @@ const PageLayout = () => {
         <>  
             <Header />
             <Outlet />
-            <TanStackRouterDevtools />
+            {/* <TanStackRouterDevtools /> */}
         </>
     );
 }

@@ -4,6 +4,7 @@ import TaskListPage from './pages/TaskListPage'
 import TaskDetailPage from './pages/TaskDetailPage'
 import IndexPage from './pages/IndexPage'
 import NotFoundPage from './pages/NotFoundPage'
+import NewTaskPage from './pages/NewTaskPage'
 
 const rootRoute = createRootRoute({
     component: PageLayout,
@@ -37,6 +38,14 @@ const routes = [
         getParentRoute: () => rootRoute,
         path: '/tasks/$taskId',
         component: TaskDetailPage,
+        loader: ({ params }) => params.taskId,
+    }),
+    
+    // Task Details
+    createRoute({
+        getParentRoute: () => rootRoute,
+        path: '/create',
+        component: NewTaskPage,
         loader: ({ params }) => params.taskId,
     }),
 

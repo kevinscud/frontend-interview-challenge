@@ -11,8 +11,11 @@ const TaskDetails = ({ task }) => {
     const datetimeInputValue = format(new Date(task.due_date), "yyyy-MM-ddThh:mm");
     // console.log(datetimeInputValue)
 
-    const updatedText = formatDistance(new Date(task.updated_at), new Date(), { addSuffix: true });
-    const createdText = formatDistance(new Date(task.created_at), new Date(), { addSuffix: true })
+    const now = new Date(+new Date() + 2000); // Now + 2s offset
+    // const now = new Date();
+    // console.log('Now: ', now);
+    const updatedText = formatDistance(new Date(task.updated_at), now, { addSuffix: true });
+    const createdText = formatDistance(new Date(task.created_at), now, { addSuffix: true })
 
     // Functions to update task status
     const { mutateAsync: startProgress } = useStartProgress(task.id);
@@ -52,6 +55,13 @@ const TaskDetails = ({ task }) => {
         closed: ['Closed', 'task_alt'],
     }[task.status_id];
 
+    const [priorityText, priorityIcon]  = { // [displayText, materialSymbolName]
+        high: ['High', 'priority_high'],
+        // high: ['High Priority', 'priority_high'],
+        normal: ['Normal', 'priority'],
+        low: ['Low', 'low_priority'],
+    }[task.task_priority];
+
     return (
         <div className='wrapper'>
             <div className='tasklist-container main-container'>
@@ -71,7 +81,7 @@ const TaskDetails = ({ task }) => {
                             <time dateTime={task.due_date}>{dueText}</time>
 
                             <p className='key'>Priority</p>
-                            <p>{task.task_priority}</p>
+                            <p>{priorityText}</p>
 
                             <div className='status-container'>
                                 <p className={`status ${task.status_id}`}>
@@ -88,19 +98,19 @@ const TaskDetails = ({ task }) => {
 
                         <div className='task-detail-controls'>
                             {status == 'open' &&
-                                <button type='button' icon='start' className='action-button' onClick={e => handleStartProgress(e)}>Start Progress</button>
+                                <button type='button' icon='start' className='action-button' onClick={handleStartProgress}>Start Progress</button>
                             }
 
                             {status == 'in_progress' &&
-                                <button type='button' icon='circle' className='action-button' onClick={e => handleStopProgress(e)}>Stop Progress</button>
+                                <button type='button' icon='circle' className='action-button' onClick={handleStopProgress}>Stop Progress</button>
                             }
 
                             {(status == 'open' || status == 'in_progress') &&
-                                <button type='button' icon='task_alt' className='action-button' onClick={e => handleCloseTask(e)}>Close</button>
+                                <button type='button' icon='task_alt' className='action-button' onClick={handleCloseTask}>Close</button>
                             }
 
                             {status == 'closed' &&
-                                <button type='button' icon='restart_alt' className='action-button' onClick={e => handleReopenTask(e)}>Reopen</button>
+                                <button type='button' icon='restart_alt' className='action-button' onClick={handleReopenTask}>Reopen</button>
                             }
 
                             <div className='spacer'/>
