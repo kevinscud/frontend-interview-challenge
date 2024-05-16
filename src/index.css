@@ -751,4 +751,25 @@ nav {
     .task-details {
         /* grid-template-columns: 1fr; */
     }
+
+    .tasklist-item {
+        grid-template-columns: 1fr;
+    }
+
+    a.nav-link {
+        translate: 0 -30px;
+
+        &::before {
+            display: block;
+            margin: auto;
+            padding-bottom: 10px;
+        }
+        /* font-size: 0; */
+        
+        &.active {
+            &::after {
+                right: 0px
+            }
+        }
+    }
 }
