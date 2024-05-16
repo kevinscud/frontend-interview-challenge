@@ -757,7 +757,8 @@ nav {
     }
 
     a.nav-link {
-        translate: 0 -30px;
+        translate: 0 -20px;
+        font-size: 0;
 
         &::before {
             display: block;
@@ -768,7 +769,7 @@ nav {
         
         &.active {
             &::after {
-                right: 0px
+                right: 10px
             }
         }
     }
