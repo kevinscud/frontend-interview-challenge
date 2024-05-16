@@ -773,4 +773,25 @@ nav {
             }
         }
     }
+
+    .task-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        .key {
+            padding-bottom: 10px;
+        }
+        .key ~ .key {
+            margin-top: 10px;
+        }
+    }
+
+    .time-summary {
+        margin-top: 20px;
+    }
+    
+    .action-button {
+        font-size: 0;
+        padding-right: 10px;
+    }
 }
