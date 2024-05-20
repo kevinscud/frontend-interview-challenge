@@ -8,8 +8,9 @@ const TaskDetails = ({ task }) => {
     // const [taskData, setTaskData] = useState(task);
 
     const dueText = format(new Date(task.due_date), "iiii, dd MMMM yyyy 'at' h:mm aa"); // e.g., "Monday, 23 May 2024 at 9:30 AM"    
-    const datetimeInputValue = format(new Date(task.due_date), "yyyy-MM-ddThh:mm");
-    // console.log(datetimeInputValue)
+    const datetimeInputValue = format(new Date(task.due_date), "yyyy-MM-dd'T'HH:mm");
+    // console.log(datetimeInputValue);
+
 
     const now = new Date(+new Date() + 2000); // Now + 2s offset
     // const now = new Date();
@@ -61,6 +62,14 @@ const TaskDetails = ({ task }) => {
         normal: ['Normal', 'priority'],
         low: ['Low', 'low_priority'],
     }[task.task_priority];
+
+    const updatedTask = {};
+
+    const updateDueDate = (e) => {
+        let date = new Date(e.target.value).toISOString();
+        updatedTask.due_date = date;
+        console.log(date);
+    }
 
     return (
         <div className='wrapper'>
@@ -126,16 +135,16 @@ const TaskDetails = ({ task }) => {
                     <>
                         <div className='task-details edit'>
                             <label className='key'>Subject</label>
-                            <input onChange={(val) => val} type="text" value={task.subject} />
+                            <input className="input-box" onChange={(val) => val} type="text" value={task.subject} />
 
                             <label className='key'>Description</label>
-                            <input onChange={(val) => val} type="text" value={task.description} />
+                            <input className="input-box" onChange={(val) => val} type="text" value={task.description} />
 
                             <label className='key'>Priority</label>
-                            <p>{task.task_priority}</p>
+                            <p className="input-box">{task.task_priority}</p>
 
                             <label className='key'>Due on</label>
-                            <input onChange={(val) => console.log(val)} type='datetime-local' value={datetimeInputValue} />
+                            <input className="input-box" onChange={updateDueDate} type='datetime-local' value={datetimeInputValue} />
 
                         </div>
 

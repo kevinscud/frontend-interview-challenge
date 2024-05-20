@@ -5,7 +5,7 @@ import { getRouteApi, Link } from '@tanstack/react-router'
 import Loader from '../components/Loader';
 import StateContainer from '../components/StateContainer';
 
-// The root where this component should be rendered
+// The route where this component should be rendered
 const ROUTE = '/tasks';
 
 const LoadingState = () => {
@@ -40,7 +40,7 @@ const ErrorState = ({ response }) => {
 }
 
 const TaskListPage = ({ page, limit }) => {
-    // Use search params for this root if page and limit are not provided in props
+    // Use search params for this route if page and limit are not provided in props
     const { page: pageParam, limit: limitParam } = getRouteApi(ROUTE).useSearch();
     page = page ?? pageParam;
     limit = limit ?? limitParam;

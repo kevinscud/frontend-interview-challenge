@@ -612,6 +612,13 @@ nav {
     }
 }
 
+.input-box {
+    all: unset;
+    background-color: var(--bg-light-color);
+    padding: 10px;
+    border-radius: 16px;
+}
+
 .action-button {
     all: unset;
 
