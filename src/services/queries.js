@@ -76,7 +76,22 @@ export function useReopenTask(taskId) {
 }
 
 // Create a new task
-export function useCreateTask() {
+
+export function useCreateTask(task) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: () => api.post('/tasks', task).then(res => {
+            console.log(res.data);
+            return res.data
+        }),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['tasks'] })
+            console.log('Task created');
+          },
+    });
+}
+
+export function useCreateTask2() {
     const queryClient = useQueryClient();
     return useMutation(newTask => fetch(`${BASE_URL}/tasks`, {
         method: 'POST',
