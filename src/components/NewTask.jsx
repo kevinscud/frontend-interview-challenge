@@ -1,5 +1,9 @@
 import { useCreateTask } from "../services/queries";
 
+let handleInput = e => {
+    console.log(e.target.value);
+}
+
 const NewTask = () => {
     let task = {
         "task_priority": "high",
@@ -21,18 +25,18 @@ const NewTask = () => {
 
                 <div className='task-details view'>
                     <p className='key'>Subject</p>
-                    <input className="input-box" style={{ marginRight: 100 }} value="" />
+                    <input  onChange={handleInput} className="input-box" defaultValue="" />
 
                     <p className='key'>Description</p>
-                    <input className="input-box" value="" />
+                    <input onChange={handleInput} className="input-box" defaultValue="" />
 
                     <p className='key'>Due on</p>
-                    <input type="datetime-local" className="input-box" value="" />
+                    <input onChange={handleInput} type="datetime-local" className="input-box" defaultValue="" />
 
                     <p className='key'>Priority</p>
-                    <p className="input-box">
+                    <fieldset className="input-box">
                         <div>
-                            <input type="radio" id="high" name="task_priority" value="high" checked />
+                            <input type="radio" id="high" name="task_priority" value="high" />
                             <label htmlFor="high">High Priority</label>
                         </div>
 
@@ -45,15 +49,7 @@ const NewTask = () => {
                             <input type="radio" id="low" name="task_priority" value="low" />
                             <label htmlFor="low">Low Priority</label>
                         </div>
-                    </p>
-
-                    <div className='status-container'>
-                        <p className={`status ${'task.status_id'}`}>
-                            {/* <span className={`status ${task.status_id}`}>{statusText}</span> */}
-                            <span className='status-icon material-symbols-rounded'>{'statusIcon'}</span>
-                            <span className='status-text'>{'statusText'}</span>
-                        </p>
-                    </div>
+                    </fieldset>
 
                     {/* <div className='time-summary'>
                         <button>Create</button>

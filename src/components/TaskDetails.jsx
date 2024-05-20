@@ -144,7 +144,7 @@ const TaskDetails = ({ task }) => {
                             <p className="input-box">{task.task_priority}</p>
 
                             <label className='key'>Due on</label>
-                            <input className="input-box" onChange={updateDueDate} type='datetime-local' value={datetimeInputValue} />
+                            <input className="input-box" onChange={updateDueDate} type='datetime-local' defaultValue={datetimeInputValue} />
 
                         </div>
 
