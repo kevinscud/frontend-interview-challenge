@@ -27,8 +27,8 @@ Node.js and npm installed on your machine ([Download Node.js](https://nodejs.org
 Clone the repository to your local machine and install the dependencies using npm:
 
 ```bash
-git clone https://github.com/kevinscud/frontend-interview-challenge.git
-cd frontend-interview-challenge
+git clone https://github.com/kevinscud/task-manager.git
+cd task-manager
 npm install
 ```
 
